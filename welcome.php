@@ -43,6 +43,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <div class="welcome">
       Welcome <?php echo $_SESSION['username'] ?> 
     </div>
+
     
   </div>
 
