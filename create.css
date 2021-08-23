@@ -1,0 +1,17 @@
+.create_cont{
+    margin:8% 8%
+}
+
+form{
+    text-align: center;
+}
+.create_title{
+    width: 566px;
+    height: 30px;
+}
+
+.create_content{
+    margin: 3% 0;
+    height: 300px;
+    width: 566px;
+}

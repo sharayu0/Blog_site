@@ -4,7 +4,7 @@ $login = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    include 'partials/_dbconnect.php';
+    include 'dbconnect.php';
 
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -32,10 +32,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="log.css" >
     <title>Login</title>
   </head>
-  <body>
+<body>
  
 <div class="main">
     <div class="signup_para">
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         <div class="container">
 
-            <form action="/loginsystem/login.php" method="post">        
+            <form action="/Blog_site/login.php" method="post">        
                 <h2>Create an Account</h2>
                 
                 <div class="form-group">
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
 
                     <div class="input">
-                        <input type="text" class="form-control" id="username" name="username">
+                        <input type="text" class="form-control" id="username" name="username" required>
                     </div>   
                 </div>
 
@@ -90,11 +90,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 
                 <button type="submit" class="signup">Log In</button>
+                <div class="login_ref">
+            <span class="login_text">Not Registered?</span>
+            <a href="/Blog_site/signup.php" class="login"> Sign Up</a>
+        </div>
             </form>             
     
         </div>
 
-
+ 
         <?php 
         if($login){
         echo ' You are logged in... ';

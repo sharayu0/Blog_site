@@ -15,13 +15,18 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="welcome.css" >
+    <link rel="stylesheet" href="extra.css" >
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <title>Welcome</title>
 
   </head>
 
   <body>
     <div class="navbar">
+        <input type="checkbox" class="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
       <div href="#"><img class="navbrand" src="./image/travellerspoint.jpg" alt=""></div>
       <div class="nav-item">
         <a class="nav_menu" href="/Blog_site/welcome.php">Home</a>

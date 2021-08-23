@@ -3,12 +3,13 @@
 $showAlert = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    include 'partials/_dbconnect.php';
+    
+    include 'dbconnect.php';
 
     $username = $_POST["username"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
+
 
 
 
@@ -27,7 +28,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
 
 
-
 }
 
 
@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="log.css" >
 
     <title>Sign Up</title>
   </head>
@@ -81,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <div class="container">
 
-    <form action="/loginsystem/signup.php" method="post">
+    <form action="/Blog_site/signup.php" method="post">
 
         <h2>Get on board today</h2>
 
@@ -91,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
 
             <div class="input">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Generate User Name">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Generate User Name" required>
             </div>   
         </div>
 
@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
 
             <div class="input">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
             </div>   
         </div>
 
@@ -110,14 +110,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label for="cpassword"> Confirm</label>
             </div>
             <div class="input">
-                <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" required>
             </div>
         </div>
         
         <button type="submit" class="signup">Create Account</button>
         <div class="login_ref">
             <span class="login_text">already have an account?</span>
-            <a href="/loginsystem/login.php" class="login"> Log In</a>
+            <a href="/Blog_site/login.php" class="login"> Log In</a>
         </div>
 
         </form>
