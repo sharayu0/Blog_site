@@ -4,5 +4,9 @@
 
  session_unset();
  session_destroy();
- header('location:welcome.php');
+
+ setcookie('usercookie','', time()-86400);
+ setcookie('passwordcookie',' ', time()-86400);
+
+ header('location:login.php');
 ?>

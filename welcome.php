@@ -1,12 +1,23 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
-  header("location:login.php");
-  exit;
+
+include 'dbconnect.php';
+
+if(isset($_SESSION['uid']) && isset($_SESSION['username'])){
+
+  $uid = $_SESSION['uid'];
+  $username = $_SESSION['username'];
+
+}
+else{
+  header("location: login.php");
 }
 
+
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -16,22 +27,16 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="welcome.css" >
+    <link rel="stylesheet" href="navbar.css" >
   <title>Welcome</title>
 
   </head>
 
   <body>
-    <div class="navbar">
-      <div href="#"><img class="navbrand" src="./image/travellerspoint.jpg" alt=""></div>
-      <div class="nav-item">
-        <a class="nav_menu" href="/Blog_site/welcome.php">Home</a>
-        <a class="nav_menu" href="/Blog_site/home.php">Blog</a>
-        <a class="nav_menu" href="/Blog_site/login.php">Login</a>
-        <a class="nav_menu" href="/Blog_site/logout.php">Logout</a>
-        
-      </div>
-    
-    </div>
+
+  <?php
+    include 'navbar.php';
+  ?>
 
 
 
@@ -39,7 +44,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
 <div class="main">
   <div class="block">
     <div class="welcome">
-      Welcome <?php echo $_SESSION['username'] ?> 
+      Welcome <?php echo $user ; ?> 
     </div>
 
     

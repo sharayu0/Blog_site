@@ -146,9 +146,7 @@ body{
 
 
 @media screen and (max-width:1024px){
-    .navbrand{
-        width: 75%;
-    }
+   
     .block{
       height: 250px;
     }
@@ -169,9 +167,7 @@ body{
 }
 
 @media screen and (max-width:768px){
-    .navbrand{
-        width: 55%;
-    }
+
     .main{
         flex-direction: column;
         margin: 0% 0%;

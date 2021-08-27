@@ -1,8 +1,17 @@
 <?php
 
+session_start();
+
 include 'dbconnect.php';
+
 include 'logic.php';
 
+if(isset($_SESSION['username'])){
+    $uid = $_SESSION['uid'];
+  
+  }else{
+    header("location:login.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -16,27 +25,20 @@ include 'logic.php';
 
     <link rel="stylesheet" href="create.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css" >
 
     <title>Blog using PHP & MySQL</title>
 </head>
 <body>
 
 
-<div class="navbarr">
-    <div href="#"><img class="navbrand" src="./image/travellerspoint.jpg" alt=""></div>
-      <div class="nav_item">
-      <a class="nav_menu" href="/Blog_site/welcome.php">Home</a>
-        <a class="nav_menu" href="/Blog_site/home.php">Blog</a>
-        <a class="nav_menu" href="/Blog_site/login.php">Login</a>
-        <a class="nav_menu" href="/Blog_site/logout.php">Logout</a>
-        
-      </div>
-      
-</div>
+<?php
+    include 'navbar.php';
+    ?>
 
     <div class="create_cont">
         <form method="GET">
-
+        
         <div>
             <input type="text" name="title" placeholder="Blog Title" class="create_title">
         </div>
@@ -53,6 +55,10 @@ include 'logic.php';
     </div>
 
  
+
+
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

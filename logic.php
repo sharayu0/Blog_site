@@ -1,25 +1,30 @@
 <?php 
+
 include 'dbconnect.php';
 
+
+
+
     $sql = "SELECT * from blog_data";
-    $query = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
     if(isset($_REQUEST["new_post"])){
         $title = $_REQUEST["title"];
         $content = $_REQUEST["content"];
-
-        $sql = "INSERT INTO blog_data(title, content) VALUES('$title', '$content')";
+        $uid = $_SESSION['uid'];
+    
+        $sql = "INSERT INTO blog_data(`title`, `content`,`user_id`) VALUES('$title', '$content','$uid')";
         mysqli_query($conn, $sql);
-
+    
         header("Location: home.php?info=added");
-        exit();
+    
     } 
 
     if(isset($_REQUEST['id'])){
         $id = $_REQUEST['id'];
 
         $sql = "SELECT * from blog_data where id=$id";
-        $query = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql);
     }
 
 
@@ -40,7 +45,7 @@ include 'dbconnect.php';
         $id = $_REQUEST['id'];
 
         $sql = "delete from blog_data where id = $id";
-        $query = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql);
 
         header("Location: home.php?info=deleted");
         exit();

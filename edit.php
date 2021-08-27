@@ -1,7 +1,17 @@
 <?php
 
+session_start();
+
 include 'dbconnect.php';
 include 'logic.php';
+
+if(isset($_SESSION['username'])){
+    $uid = $_SESSION['uid'];
+    $username = $_SESSION['username'];
+  
+  }else{
+    header("location:login.php");
+  }
 
 ?>
 
@@ -13,27 +23,20 @@ include 'logic.php';
 
    
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css" >
 
     <title>Blog using PHP & MySQL</title>
 </head>
 <body>
 
-<div class="navbarr">
-    <div href="#"><img class="navbrand" src="./image/travellerspoint.jpg" alt=""></div>
-      <div class="nav_item">
-      <a class="nav_menu" href="/Blog_site/welcome.php">Home</a>
-        <a class="nav_menu" href="/Blog_site/home.php">Blog</a>
-        <a class="nav_menu" href="/Blog_site/login.php">Login</a>
-        <a class="nav_menu" href="/Blog_site/logout.php">Logout</a>
-        
-    </div>
-      
-</div>
+<?php
+    include 'navbar.php';
+    ?>
 
     <div class="view_container">
     <div class="view">
 
-    <?php foreach($query as $q){ ?>
+    <?php foreach($result as $q){ ?>
             <form method="GET">
                 <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
                 <input type="text" name="title" placeholder="Blog Title" class="view_title text_center view_width" value="<?php echo $q['title'];?>">

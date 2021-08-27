@@ -1,7 +1,17 @@
 <?php
 
+session_start();
+ 
 include 'dbconnect.php';
 include 'logic.php';
+
+if(isset($_SESSION['username'])){
+    $uid = $_SESSION['uid'];
+    $username = $_SESSION['username'];
+   
+  }else{
+    header("location:login.php");
+  }
 
 ?>
 
@@ -16,22 +26,15 @@ include 'logic.php';
 
     
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css" >
 
     <title>Blog using PHP & MySQL</title>
 </head>
 <body>
 
-<div class="navbarr">
-    <div href="#"><img class="navbrand" src="./image/travellerspoint.jpg" alt=""></div>
-      <div class="nav_item">
-      <a class="nav_menu" href="/Blog_site/welcome.php">Home</a>
-        <a class="nav_menu" href="/Blog_site/home.php">Blog</a>
-        <a class="nav_menu" href="/Blog_site/login.php">Login</a>
-        <a class="nav_menu" href="/Blog_site/logout.php">Logout</a>
-        
-      </div>
-      
-</div>
+<?php
+    include 'navbar.php';
+    ?>
 
 
     <div class="container mt-5">
@@ -58,8 +61,32 @@ include 'logic.php';
             <a href="create.php" class="newbtn">+ Create a new post</a>
         </div>
 
+
+<?php
+    
+    
+    $sql = "SELECT * FROM `users` where username='$username'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    if($row['usertype'] == 'admin'){
+        $sql = "SELECT * FROM `blog_data`";
+        $result = mysqli_query($conn, $sql);
+
+    }elseif($row['usertype'] == 'user'){
+        $sql = "SELECT * FROM `blog_data` WHERE user_id ='$uid'";
+        $result = mysqli_query($conn, $sql);
+   
+   
+   
+   
+    }
+
+
+    if($result){
+?>
         <div class="row">
-            <?php foreach($query as $q){ ?>
+            <?php foreach($result as $q){ ?>
                 <div class="col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
@@ -70,7 +97,7 @@ include 'logic.php';
                               <p class="card-text"><?php echo substr($q['content'], 0, 200);?>...</p>
                             </div>
                             <div class="btn_read">
-                            <a href="view.php?id=<?php echo $q['id']?>" class=".read_btn">Read More</a>
+                            <a href="view.php?id=<?php echo $q['id']?>" class="read_btn">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +106,7 @@ include 'logic.php';
         </div>
 
     </div>
-
+    <?php }?>
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

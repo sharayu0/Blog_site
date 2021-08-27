@@ -9,24 +9,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST["username"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
-
-
-
-
-    if($password == $cpassword){
-        $sql = "INSERT INTO `users` (`username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
-
-        $result = mysqli_query($conn, $sql);
-        if($result){
-            $showAlert = true;
-            $showAlert = "<div class='alert'>Your Account is Successfully created !!!</div>";
-        }
+    
+    $dup = mysqli_query($conn, "select * from users where username= '$username'");
+    if(mysqli_num_rows($dup)>0){
+        echo "<div class='alert'>Username <span class='dup_entry'>$username</span> already exist.. Try another one!!</div>";
     }
     else{
-        $showError = "<div class='alert'>Password do not match !!!</div>";
-    }
-    
 
+        if($password == $cpassword){
+            $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$password')";
+
+            $result = mysqli_query($conn, $sql);
+            if($result){
+                $showAlert = true;
+                $showAlert = "<div class='alert'>Your Account is Successfully created !!!</div>";
+            }
+        }
+        else{
+            $showError = "<div class='alert'>Password do not match !!!</div>";
+        }  
+    
+    }
 
 }
 
@@ -95,6 +98,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>   
         </div>
 
+
+        
         <div class="form-group">
             <div class="label">
                 <label for="password">Password  </label>

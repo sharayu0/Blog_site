@@ -67,7 +67,10 @@ body{
     color: #a3cdf1 !important;
    margin-left: 5px;
 }
-
+.dup_entry{
+    color: yellow;
+    font-size: 19px;
+}
 .alert{
     text-align: center;
     margin: 8% 0;

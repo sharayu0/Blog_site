@@ -1,29 +1,58 @@
 <?php
-
-$login = false;
-$showError = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
+session_start();
+ob_start();
     include 'dbconnect.php';
 
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-         
-    $sql = "select * from users where username='$username' AND password='$password'";
+    $login = false;
+    $showError = false;
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $result = mysqli_query($conn, $sql);
+
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+         
+        $sql = "select * from users where username='$username' AND password='$password'";
+
+        $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
-        if($num == 1){
-        $login=true;
-        session_start();
-        $_SESSION['loggedin']=true;
-        $_SESSION['username']=$username;
-        header("location:welcome.php");
+        
+        if($num < 1){
+            $showError = "<div class='alert'>Invalid Credentials !!!</div>";
         }
-    else{
-        $showError = "<div class='alert'>Invalid Credentials !!!</div>";
+        else{
+            $login = true;
+            $row = mysqli_fetch_assoc($result);
+
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['uid'] = $row['uid'];
+            $_SESSION['usertype'] = $row['usertype'];
+
+            if($row['usertype']=='admin'){
+                if(isset($_SESSION['username'])){
+
+                    if(isset($_POST['rememberme'])){
+
+                        setcookie('usercookie', $username, time()+86400);
+                        setcookie('passwordcookie', base64_encode($password), time()+86400);
+                        header("location: admin_index.php");
+
+                    }else{
+                        header("location: admin_index.php");
+                    }
+
+                    header("location: admin_index.php");
+                }
+            }
+            elseif($row['usertype']=='user'){
+                if(isset($_SESSION['username'])){
+
+                    header("location: welcome.php");
+                }
+            }
+        }
     }
-}
+
+
 ?>
 
 <!doctype html>
@@ -74,7 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
 
                     <div class="input">
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control" id="username" name="username" required value="<?php if(isset($_COOKIE['usercookie'])){ echo $_COOKIE['usercookie']; } ?>">
                     </div>   
                 </div>
 
@@ -84,10 +113,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
 
                     <div class="input">
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE['passwordcookie'])){ echo base64_encode($_COOKIE['passwordcookie']); } ?>">
                     </div>   
                 </div>
 
+                <div>
+                    <input type="checkbox" class="form-control" name="rememberme"> Remember Me    
+                </div>
                 
                 <button type="submit" class="signup">Log In</button>
                 <div class="login_ref">
