@@ -163,9 +163,9 @@ $result = mysqli_query($conn, $sql);
           </td>
 
           <td class="div_cell">
-            <form action="admin_dlt_user.php" method="post">
+            <form action="admin_dlt_user.php" method="POST">
               <input type="text" hidden name="delete_id" value="<?php echo $row['uid']; ?>">
-              <button type="submit" name="delete_btn" class = "btn btn-danger">Delete</button>
+              <button name="delete_btn" class = "btn btn-danger">Delete</button>
             </form>
           </td>
 
