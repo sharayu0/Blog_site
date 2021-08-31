@@ -22,7 +22,7 @@ if(isset($_SESSION['username'])){
 
     
    
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="post.css">
     <link rel="stylesheet" href="navbar.css" >
 
     <title>Blog using PHP & MySQL</title>
@@ -38,8 +38,11 @@ if(isset($_SESSION['username'])){
     <div class="view_container">
      <div class="view">
       <?php foreach($result as $q){?>
+        <div class="card_head">
+          <img src= <?php echo "image/".$q['image'];?> alt="">
+        </div>
         <div class="view_title text_center">
-            <?php echo $q['title'];?>
+          <?php echo $q['title'];?>
             
         </div>
         <div class="view_content">

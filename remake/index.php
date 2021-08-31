@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-    include 'dbconnect.php';
+    include '../dbconnect.php';
 
     $login = false;
     $showError = false;
@@ -55,20 +55,30 @@ ob_start();
 
 ?>
 
+
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="log1.css" >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css" >
+    
+
+
     <title>Login</title>
   </head>
-<body>
- 
+
+  <body>
     <div class="navbar">
         <div class="navitem">
-            <a class="nav text_deco_none" href="../Blog_site/remake/home.php">Home</a>
+            <a class="nav text_deco_none" href="#">Home</a>
             <a class="nav text_deco_none" href="#">Login</a>
         </div>
         <div>
@@ -76,21 +86,20 @@ ob_start();
         </div>
     </div> 
 
-
     <div class="container">
         <div class="left">
             <div class="left_cont">It's Not About The Destination It's About The Journey...</div>
-            <a href="" class="reg_link text_deco_none">Already Registered ??</a>
-            <a href="/Blog_site/signup.php" class="btn btn-success text_deco_none">Register</a>
+            <a href="" class="reg_link text_deco_none">Not Registered ??</a>
+            <a href="" class="btn btn-success text_deco_none">Create Account</a>
             
         </div>
 
         <div class="right">
+  
 
-        
-        <div class="log_container">
+          <div class="log_container">
 
-            <form action="/Blog_site/login.php" method="post">        
+            <form action="/Blog_site/remake/index.php" method="post"> 
                 
                 <div class="form-group">
                     <div class="label">
@@ -98,7 +107,7 @@ ob_start();
                     </div>
 
                     <div class="input">
-                        <input type="text" class="form-control" id="username" name="username" required value="<?php if(isset($_COOKIE['usercookie'])){ echo $_COOKIE['usercookie']; } ?>">
+                        <input type="text" class="form-control" id="username" name="username"  required value="<?php if(isset($_COOKIE['usercookie'])){ echo $_COOKIE['usercookie']; } ?>">
                     </div>   
                 </div>
                 
@@ -118,27 +127,23 @@ ob_start();
                 </div>
                 
                 <button type="submit" class="signup">Log In</button>
-                <div class="login_ref">
+            </form>  
 
-            </div>
-            </form>             
-    
+          </div>
+
+          <?php 
+            if($login){
+              echo ' You are logged in... ';
+            }
+              if($showError){
+              echo $showError;
+            }
+          ?>
+
         </div>
 
- 
-        <?php 
-        if($login){
-        echo ' You are logged in... ';
-        }
-        if($showError){
-        echo $showError;
-        }
-        ?>
-
-    
     </div>
 
-</div>
 
     
   </body>

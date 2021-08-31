@@ -8,7 +8,8 @@ body{
 .post_notify {
     width: 80%;
     margin: auto;
-    padding: 6px 22px;
+    padding: 8px 22px;
+    margin-top: 4%;
     color: green;
     background-color: #a1dfbd;
 }
@@ -33,7 +34,8 @@ body{
 }
 .text_center{
     text-align: center;
-    margin-top: 3%;
+    margin: 4% 0;
+    font-size: 1.5em;
 }
 .newbtn{
     border: 1px solid black;
@@ -57,6 +59,7 @@ body{
 }
 .card_head{
     height: 15%;
+    text-align: center;
 }
 .card_data{
     height: 60%;
@@ -134,3 +137,114 @@ body{
 
 /* create.php */
 
+/* copied from welcome.css */
+
+
+
+
+
+
+.block_button{
+   
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+ 
+}
+.block_div1{
+    display: flex;
+}
+.block_div2{
+    display: flex;
+}
+.link{
+    text-decoration: none;
+    padding: 2px 3px;
+    background-color: rgb(156 155 158 / 32%);
+    margin: 2px 3px;
+    font-size: 15px;
+    color: black;
+}
+.block_foot{
+    color: rgb(104, 103, 103);
+    font-size: 13px;
+    margin: 4px 5px;
+    margin-top: 30px;
+}
+.container{
+    width: 65%;
+    margin-left: 2%;
+}
+.back_img{
+    width: 100%;
+    height: 250px;
+    background-image: url('./image/nature.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 250px;
+    width:100%;
+    height: 250px;
+    
+    border: 1px solid black;
+}
+
+.quote{
+    color: #d6f3de;
+    margin: 88px 21px;
+    padding: -2px;
+    line-height: 1.5;
+    width: 250px;
+}
+
+.subcontainer{
+    width: 100%;
+}
+
+.blog_img{
+    height: 45%;
+}
+.main_img{
+    width: 100%;
+    height: 100%;
+}
+.blog_data{
+    width: 90%;
+    overflow: auto;
+    padding: 14px;
+    height: 55%;
+    margin: 7px 3px;
+}
+.writer{
+    margin-right: 11px;
+    display: inline-block;
+    float: right;
+}
+.img_data{
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 5% 1%;
+}
+
+
+
+
+
+
+
+.home_container{ 
+    width:100%;
+}
+.blog_div{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    margin: 2%;
+    margin-top: 2em;
+    background-color: white;
+    color: #424040;
+}
+.blog_post{
+    display: flex;
+    justify-content: center;
+}

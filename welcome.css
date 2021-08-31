@@ -105,6 +105,9 @@ body{
 .subcontainer{
     width: 100%;
 }
+.flex_prop{
+    
+}
 .blog_post{
     display: flex;
 }

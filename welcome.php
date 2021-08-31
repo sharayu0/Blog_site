@@ -44,7 +44,7 @@ else{
 <div class="main">
   <div class="block">
     <div class="welcome">
-      Welcome <?php echo $user ; ?> 
+      Welcome <?php echo $username; ?> 
     </div>
 
     
