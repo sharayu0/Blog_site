@@ -8,7 +8,6 @@ include 'logic.php';
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
     $username = $_SESSION['username'];
-  
   }else{
     header("location:login.php");
   }
@@ -21,9 +20,8 @@ if(isset($_SESSION['username'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   
     <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="navbar.css" >
+    <link rel="stylesheet" href="navbar.css">
 
     <title>Blog using PHP & MySQL</title>
 </head>
@@ -37,10 +35,19 @@ if(isset($_SESSION['username'])){
     <div class="view">
 
     <?php foreach($result as $q){ ?>
-            <form method="GET">
+
+            <form method="POST">
+
+            <div>
+                <input type="file" name="image" id="image" value="<?php echo $q['image'];?>"><br>
+            </div>
+            
                 <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
-                <input type="text" name="title" placeholder="Blog Title" class="view_title text_center view_width" value="<?php echo $q['title'];?>">
+
+                <input type="text" name="title" placeholder="Blog Title" class="view_title text_center view_width" value="<?php echo $q['title'];?>"> 
+
                 <textarea name="content" class="edit_content" cols="30" rows="10"><?php echo $q['content'];?></textarea>
+
             <div>
             <button class="up_btn" name="update">Update</button>
             </div>
