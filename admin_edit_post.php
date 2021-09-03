@@ -21,9 +21,9 @@ if(isset($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    
-    <link rel="stylesheet" href="post.css">
+    
     <link rel="stylesheet" href="navbar.css" >
-
+    <link rel="stylesheet" href="sass/admin_post.css">
     <title>Blog using PHP & MySQL</title>
 </head>
 <body>

@@ -1,39 +1,53 @@
 <?php
+ include 'dbconnect.php';
+ include 'Database.php';
+
+ $obj = new Database();
+
+ $showAlert = false;
+ $showError = false;
  
-$showAlert = false;
-$showError = false;
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
      
-    
-    include 'dbconnect.php';
 
     $username = $_POST["username"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
     
-    $dup = mysqli_query($conn, "select * from users where username= '$username'");
-    if(mysqli_num_rows($dup)>0){
-        echo "<div class='alert'>Username <span class='dup_entry'>$username</span> already exist.. Try another one!!</div>";
-    }
-    else{
+
+
 
         if($password == $cpassword){
-            $sql = "INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$password')";
+
+            $sql = "select * from users where username= '$username'";
 
             $result = mysqli_query($conn, $sql);
-            if($result){
-                $showAlert = true;
-                $showAlert = "<div class='alert'>Your Account is Successfully created !!!</div>";
-            }
+
+            if(!$result->num_rows > 0){
+                if($result){
+                    $obj->insert('users',['username'=>$username,'password'=>$password]);
+
+                    $showAlert = true;
+                    $showAlert = "<div class='alert'>Your Account is Successfully created !!!</div>";
+
+                   
+                }
+                else{
+                    echo "<div class='alert'>Something went wrong !!!</div>";
+                   
+                }  
+            }else{
+                echo"<div class='alert'>Username <span class='dup_entry'>$username</span> already exist.. Try another one!!!!!</div>";
+            } 
+
         }
         else{
             $showError = "<div class='alert'>Password do not match !!!</div>";
         }  
     
-    }
 
 }
-
 
 ?>
 

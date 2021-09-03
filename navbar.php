@@ -7,7 +7,7 @@
       <img class="navbrand logo" src="./image/travellerspoint.jpg" alt="">
       <ul>
 
-        <li><a class="active" href="/Blog_site/remake/home.php">Home</a></li>
+        <li><a class="active" href="/Blog_site/home.php">Home</a></li>
 
         <li><a href="/Blog_site/blog.php">Blog</a></li>
 

@@ -36,22 +36,22 @@ if(isset($_SESSION['username'])){
 
     <?php foreach($result as $q){ ?>
 
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
 
-            <div>
-                <input type="file" name="image" id="image" value="<?php echo $q['image'];?>"><br>
-            </div>
-            
-                <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
+                <div>
+                    <input type="file" name="image" id="image"><br>
+                </div>
+                
+                    <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
 
-                <input type="text" name="title" placeholder="Blog Title" class="view_title text_center view_width" value="<?php echo $q['title'];?>"> 
+                    <input type="text" name="title" placeholder="Blog Title" class="view_title text_center view_width" value="<?php echo $q['title'];?>"> 
 
-                <textarea name="content" class="edit_content" cols="30" rows="10"><?php echo $q['content'];?></textarea>
+                    <textarea name="content" class="edit_content" cols="30" rows="10"><?php echo $q['content'];?></textarea>
 
-            <div>
-            <button class="up_btn" name="update">Update</button>
-            </div>
-        </form>
+                <div>
+                <button class="up_btn" name="update">Update</button>
+                </div>
+            </form>
         <?php }?>
     </div>
          

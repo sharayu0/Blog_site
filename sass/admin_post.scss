@@ -1,0 +1,54 @@
+
+@mixin marginprob($top, $right, $bottom, $left){
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+    margin-left: $left;
+}
+
+*{
+    @include marginprob(0,0,0,0);
+}
+
+$text: black;
+$background: rgb(208, 225, 230);
+$bgcolor: white;
+
+body{
+    margin: auto;
+    font-family: Roboto, Helvetica, sans-serif;
+    color :$text;
+    background-color:$background;
+}
+
+.view_container{
+    @include marginprob(8%,18%,8%,18%);
+}
+
+.view{
+    background-color: $bgcolor;
+    padding: 2% 4%;
+
+    .view_title{
+        font-size: 2em;
+    }
+    .view_width{
+        width: 100%;
+    }
+    .text_center{
+        text-align: center;
+        margin: 4% 0;
+        font-size: 1.5em;
+    }
+}
+
+
+.edit_content{
+    width: 100%;
+    margin: 2% 0;
+    line-height: 1.5;
+}
+.up_btn{
+    padding: 7px 20px;
+}
+

@@ -14,14 +14,7 @@ body{
     background-color: #a1dfbd;
 }
 
-.navbarr{
-    background-color: #269de3;
-    color: white;
-    height: 77px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
+
 .nav_menu{
     text-decoration: none;
     color: #fff;
@@ -227,7 +220,11 @@ body{
 
 
 
-
+.head{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
 

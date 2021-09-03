@@ -1,0 +1,350 @@
+body{
+    margin: auto;
+    font-family: Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+.container{
+    display: flex;
+    width: 100%;
+}
+
+:root{
+    --primary-color: #183654;
+    --secondary-color: #94c3d8;
+    --mode-color: #d4d1d1;
+    --post-back-col: white;
+    --text-color:black;
+    --scroll-col:#304e6b;
+}
+
+.dark_theme{
+    --primary-color: #1e2a3a;
+    --secondary-color: #111821; 
+    --mode-color: #555557b9;
+    --post-back-col: #1e2a3a;
+    --text-color:white;
+    --scroll-col:#1d2e44;
+}
+
+/* leftcontainer */
+.navbar{
+    width: 25%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    position: sticky;
+    top: 0;
+    overflow: scroll;
+}
+.filter{
+    display: none;
+    text-align: center;
+    color: white;
+    font-size: 1.7em;
+    font-weight: bold;
+    margin: 9%;
+}
+
+/* profile */
+.image_form{
+    margin: 8% 0;
+}
+.pro_image_form{
+    display: inline-block;
+}
+#upload_btn{
+    display: inline-block;
+}
+.pro_image{
+    width: 88px;
+}
+
+
+.profile{
+    width: 100%;
+    margin-top: 15%;
+    text-align: center;
+}
+.name{
+    color: white;
+    font-size: 1.7em;
+    font-weight: bold;
+    margin: 9%;
+    text-align: center;
+}
+.initial{
+    font-size: 8em;
+    font-weight: bold;
+    color: #183654;
+}
+.profle_pic{
+    width: 160px;
+    margin: auto;
+    height: 170px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.profile_info{
+    color: white;
+    margin: 9%;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 0 5%;
+    line-height: 1.5;
+}
+.hr{
+    background-color: rgba(255, 255, 255, 0.582);
+    height: 1px;
+    width: 85%;
+    margin: auto;
+    margin-top: 7%;
+}
+
+/* navbar navitem */
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.5;
+    margin: 9% 0;
+}
+
+.nav_block{
+    margin: 4% 0;
+}
+
+.navitem{
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.fas{
+    color: white;
+}
+.text_deco_none{
+    text-decoration: none;
+}
+
+
+/* right container */
+.content{
+    background-color: var(--secondary-color);
+    width: 75%;
+
+}
+.content_head{
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 6%;
+    color: var(--text-color);
+}
+
+
+/* bloglist */
+
+
+.blog_post{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+.blog_div{
+    width: 265px;
+    height: 500px;
+    background-color: var(--post-back-col);
+    color: var(--text-color);
+    margin: 2% 2%;
+    position: relative;
+    box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
+}
+.blog_img {
+    height: 46%;
+}
+.main_img{
+    width: 100%;
+    height: 100%;
+}
+.blog_data{
+    overflow: auto;
+    padding: 14px;
+    
+}
+.head {
+    margin: 1% 0;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+}
+.img_data{
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 5% 1%;
+}
+
+    .read_btn {
+        text-decoration: none;
+        color: var(--text-color);
+        position: absolute;
+        bottom: 29px;
+        color: white;
+        padding: 7px;
+        box-shadow: 0 6px 8px 1px rgb(0 0 0 / 20%);
+        border-radius: 7px;
+        background-color: #183654;
+       
+    }
+
+
+/* dark mode/ light mode */
+
+.mode{
+    text-align: center;
+    line-height: 1.5;
+    margin: 11% 0;
+}
+#toggle{
+    position: relative;
+    display: block;
+    width: 69px;
+    margin: auto;
+    height: 25px;
+    margin-top: 8%;
+    border-radius: 160px;
+    border: 4px solid var(--mode-color);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.indicator{
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 29px;
+    align-items: center;
+    height: 19px;
+    background-color: var(--mode-color);
+    border-radius: 43%;
+    transform: scale(0.9);
+    transition: 0.5s;
+}
+
+#toggle.active .indicator{
+    left: 38px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: var(--scroll-col);
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(transparent, var(--scroll-col));
+    border-radius: 6px;
+}
+
+
+
+
+@media screen and (max-width:1024px) {
+    .navbar{
+        width: 35%;
+        
+    }
+}
+
+
+
+
+ @media screen and (max-width:850px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .filter {
+        margin: 10px 0;
+        font-size: 22px;
+        line-height: 25px;
+    }
+    .minimize{
+        display: none;
+    }
+    .navbar{
+        width: 100%;
+        height: max-content;
+        position: relative;
+       
+        top: 0;
+    }
+    .content {
+       width: 100%;
+    }
+    .content_head {
+        font-size: 2.2em;
+    }
+    .name {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin: 5%;
+    }
+    .mode {
+        text-align: center;
+        line-height: 1.5;
+        margin: 3% 0;
+    }
+    #toggle {
+       
+        margin-top: 3%;
+    } 
+    .name {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin: 3%;
+    }
+    .hr {
+        background-color: rgba(255, 255, 255, 0.582);
+        height: 1px;
+        width: 85%;
+        margin: auto;
+        margin-top: 4%;
+    }
+    .profile {
+        width: 100%;
+        margin-top: 5%;
+        text-align: center;
+    }
+    .profile_info {
+        color: white;
+        margin: 3%;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 0 5%;
+        line-height: 1.5;
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        line-height: 1.5;
+        margin: 1% 0;
+    }
+    .nav_block {
+        margin: 2% 0;
+    }
+    .blog_div {
+        width: 310px;
+        height: 500px;
+        background-color: var(--post-back-col);
+        color: var(--text-color);
+        margin: 2% 2%;
+        position: relative;
+        box-shadow: 0 6px 8px 1px rgb(0 0 0 / 20%);
+    }
+ }

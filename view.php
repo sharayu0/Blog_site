@@ -30,7 +30,7 @@ if(isset($_SESSION['username'])){
 <body>
 
 
-<?php
+<?php        
     include 'navbar.php';
     ?>
 

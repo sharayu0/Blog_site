@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])){
 
 
     
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="post.css">
     
     <link rel="stylesheet" href="navbar.css" >
 

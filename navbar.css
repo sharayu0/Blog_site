@@ -9,7 +9,7 @@
     font-family: montserrat;
   }
   nav{
-    background: #269de3;
+    background: #183654;
     height: 70px;
     width: 100%;
   }
@@ -37,7 +37,7 @@
     text-transform: uppercase;
   }
   a.active,a:hover{
-    background: #1b9bff;
+    background:  #183654;
     transition: .5s;
   }
   .checkbtn{
@@ -80,7 +80,7 @@
       position: fixed;
       width: 60%;
       height: 100vh;
-      background: #269de3;
+      background:  #183654;
       top: 80px;
       left: -100%;
       text-align: center;

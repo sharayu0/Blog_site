@@ -6,6 +6,8 @@ include 'dbconnect.php';
 
 include 'logic.php';
 
+$obj = new Database();
+
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
   

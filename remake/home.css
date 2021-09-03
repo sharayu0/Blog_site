@@ -125,6 +125,7 @@ body{
     background-color: white;
     color: #424040;
     margin: 2% 2%;
+    position: relative;
 }
 .blog_img {
     height: 50%;
@@ -143,6 +144,9 @@ body{
 }
 .head {
     margin: 1% 0;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .img_data{
     font-size: 14px;
@@ -153,6 +157,8 @@ body{
 .read_btn{
     text-decoration: none;
     color: black;
+    position: absolute;
+    bottom: 2px;
 }
 
 
