@@ -1,8 +1,12 @@
 <?php
  include 'dbconnect.php';
- include 'Database.php';
+ spl_autoload_register(function($class){
+    require_once($class.'.php');
+});
 
- $obj = new Database();
+session_start();
+ 
+ 
 
  $showAlert = false;
  $showError = false;
@@ -14,30 +18,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST["username"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
+
     
-
-
 
         if($password == $cpassword){
 
-            $sql = "select * from users where username= '$username'";
+            $obj = new Register();
+            $result = $obj->user_check($username);
 
-            $result = mysqli_query($conn, $sql);
-
-            if(!$result->num_rows > 0){
-                if($result){
-                    $obj->insert('users',['username'=>$username,'password'=>$password]);
+            if(empty($result)){
+                
+                    $obj->signup($username, $password);
 
                     $showAlert = true;
                     $showAlert = "<div class='alert'>Your Account is Successfully created !!!</div>";
-
-                   
-                }
-                else{
-                    echo "<div class='alert'>Something went wrong !!!</div>";
-                   
-                }  
-            }else{
+            }
+            else{
                 echo"<div class='alert'>Username <span class='dup_entry'>$username</span> already exist.. Try another one!!!!!</div>";
             } 
 
@@ -62,7 +58,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="log1.css" >
+    <link rel="stylesheet" href="sass/partials/animation.css" >
+    <link rel="stylesheet" href="sass/login.css" >
 
     <title>Sign Up</title>
   </head>
@@ -70,91 +67,110 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      
 
 
-  <div class="navbar">
-            <div class="navitem">
-              <a class="nav text_deco_none" href="../Blog_site/remake/home.php">Home</a>
-              <a class="nav text_deco_none" href="#">Login</a>
-            </div>
-            <div>
-              <a href="#" class="logo text_deco_none">BloGEX</a>
-            </div>
-    </div> 
-
-
   
-
-    <div class="container">
-        <div class="left">
-            <div class="left_cont">It's Not About The Destination It's About The Journey...</div>
-            <a href="" class="reg_link text_deco_none">Already Registered ??</a>
-            <a href="/Blog_site/login.php" class="btn btn-success text_deco_none">Login</a>
-            
-        </div>
-
-        <div class="right">
 
            
 
 
 
+    <div class="wrapper">
+
+        <div class="navbar">
+            <div>
+                <a href="#" class="logo">BloGEX</a>
+            </div>
+            <div class="navitem">
+                <a class="nav" href="/Blog_site/home_ano.php">Home</a>
+                <a class="nav" href="#">Blog</a>
+                <a class="nav" href="#">Contact</a>
+                <a class="nav" href="/Blog_site/login.php">Login</a>
+                <a class="nav" href="#">Signup </a>
+            </div>
+        </div> 
+
+
+     
+        
+
+        
         <div class="log_container">
 
-            <form action="/Blog_site/signup.php" method="post">
-
+            <form action="/Blog_site/signup.php" method="post">        
+            
+                <div class="head">Sign up </div>
 
                 <div class="form-group">
-                    <div class="label">
-                        <label for="username">Username  </label>
-                    </div>
-
+                    
                     <div class="input">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Generate User Name" required>
+                        <span class="fa fa-user">
+                        </span>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    </div> 
+
+                </div>
+                
+
+                <div class="form-group">
+        
+                    <div class="input">
+                        <span class="fas fa-lock">
+                        </span>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>   
                 </div>
 
-        
-                <div class="form-group">
-                    <div class="label">
-                        <label for="password">Password  </label>
-                    </div>
 
+                <div class="form-group">
+        
                     <div class="input">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                        <span class="fas fa-lock">
+                        </span>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password">
                     </div>   
                 </div>
 
-                <div class="form-group">
-                    <div class="label">
-                        <label for="cpassword"> Confirm</label>
-                    </div>
-                    <div class="input">
-                        <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" required>
-                    </div>
-                </div>
-        
-                <button type="submit" class="signup">Create Account</button>
+                
+                <button type="submit" class="signup">Sign Up</button>
+
                 <div class="login_ref">
-                    <span class="login_text">already have an account?</span>
-                    <a href="/Blog_site/login.php" class="login"> Log In</a>
+                    <span class="login_text">Already Registered ??</span>
+                    <a href="/Blog_site/login.php" class="login">Log In</a>
                 </div>
-
-            </form>
+            
+            </form>             
+    
         </div>
 
+ 
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
 
-    <?php 
-    if($showAlert){
-        echo $showAlert;
-    }
-    if($showError){
-        echo  $showError;
-        }
-    ?>
+        <?php 
+            if($showAlert){
+                echo $showAlert;
+            }
+            if($showError){
+                echo  $showError;
+            }
+        ?>
     
     </div>
 
-</div>
 
+    
+    
+   
 
 
 

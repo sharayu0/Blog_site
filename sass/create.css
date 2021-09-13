@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .content {
+  width: 75%;
+  background-color: var(--secondary-color);
+}
+
+.container .content .content_div {
+  margin: 20% 2%;
+  width: 100%;
+}
+
+.container .content .content_div form {
+  text-align: center;
+}
+
+.container .content .content_div form .image_file {
+  margin: 1%;
+}
+
+.container .content .content_div form .create_title {
+  width: 566px;
+  height: 30px;
+}
+
+.container .content .content_div form .create_content {
+  margin: 3% 0;
+  height: 300px;
+  width: 566px;
+}
+
+.container .content .content_div form .btn {
+  width: 100px;
+  height: 35px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=create.css.map */

@@ -1,9 +1,13 @@
 <?php 
+spl_autoload_register(function($class){
+    require_once($class.'.php');
+});
 
 include 'dbconnect.php';
-include 'Database.php';
 
-$obj = new Database();
+$obj = new Blogs();
+
+
 
 
     $sql = "SELECT * from blog_data";
@@ -21,11 +25,10 @@ $obj = new Database();
         
         $content = $_POST["content"];
         $uid = $_SESSION['uid'];
-    
+     
+        $obj->insert_blog($imagename,$title, $content, $uid);
 
-        $obj->insert('blog_data',['image'=>$imagename,'title'=>$title,'content'=>$content,'user_id'=>$uid]);
-
-         header("Location: blog.php?info=added");
+        header("Location: blog.php?info=added");
     } 
 
 
@@ -37,19 +40,19 @@ $obj = new Database();
     }
 
 
-    if(isset($_POST['update'])){
+    if(isset($_POST["update"])){
 
-        include 'dbconnect.php';
+        $obj1 = new Updatevalue();
 
         $id = $_POST["id"];
         $imagename = $_FILES['image']['name']; 
         $tempimgname = $_FILES['image']['tmp_name'];
-
+       
         move_uploaded_file($tempimgname, "image/$imagename");
-        $title = $_REQUEST["title"];
-        $content = $_REQUEST["content"];
+        $title = $_POST["title"];
+        $content = $_POST["content"];
 
-        $obj-> update('blog_data',['image'=>$imagename,'title'=>$title,'content'=>$content],'id ="'.$id.'"');        
+        $obj1->update($imagename,$title, $content, $id);       
 
         header("Location: blog.php?info=updated");
         exit(); 
@@ -57,9 +60,9 @@ $obj = new Database();
 
 
     if(isset($_REQUEST['delete'])){
-
+       
         $id = $_REQUEST['id']; 
-        $obj-> delete('blog_data','id ="'.$id.'"');
+        $obj-> delete_blog($id);
       
         header("Location: blog.php?info=deleted");
         exit();

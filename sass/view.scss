@@ -1,0 +1,70 @@
+.body{
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+
+    .view{
+        width: 75%;
+        background-color: var(--secondary-color);
+
+        .content{
+            width: 82%;
+            margin: auto;
+            margin-top: 7%;
+            margin-bottom: 12%;
+            
+            .view_title{
+                padding: 18px 0;
+                font-size: 3em;
+                font-weight: bold;
+            }
+
+            .img_div{
+                margin: auto;
+
+                .img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .content_div{
+                padding: 3% 0;
+                line-height: 1.5;
+
+                .view_content{
+
+                }
+
+                .view_btn{
+                    display: flex;
+                    justify-content: center;
+                    margin: 45px 0;
+
+                    .button{
+                        text-decoration: none;
+                        border: none;
+                        margin: 20px 15px;
+                        border: 1px solid #183654;
+                        background-color: #183654;
+                        color: white;
+                        font-size: 15px;
+                        width: 66px;
+                        text-align: center;
+                        height: 28px;
+                        align-items: center;
+                        border-radius: 7px;
+                    }
+                    .edit_btn{
+                        height: 26px;
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+}
+

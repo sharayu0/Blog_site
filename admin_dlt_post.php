@@ -1,13 +1,17 @@
 <?php
 include 'dbconnect.php';
+spl_autoload_register(function($class){
+    require_once($class.'.php');
+});
+
+$obj = new Blogs();
+
 if(isset($_POST['delete'])){
+
     $id=$_POST['dlt_id'];
-    $sql = "DELETE from blog_data WHERE id = $id";
-    $result = mysqli_query($conn, $sql);
+    $obj-> delete_blog($id);
     
-    if($result){
-        header("location:admin_index.php?info=deleted");
-    }
-  
+    header("location:admin_index.php?info=deleted");
+   
 }
 ?> 

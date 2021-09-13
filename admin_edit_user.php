@@ -3,6 +3,10 @@
 session_start();
 
 include 'dbconnect.php';
+spl_autoload_register(function($class){
+  require_once($class.'.php');
+});
+
 
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
@@ -22,6 +26,10 @@ if(isset($_SESSION['username'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
     <link rel="stylesheet" href="navbar.css" >
     <link rel="stylesheet" href="admin_index.css" >
@@ -47,8 +55,9 @@ if(isset($_SESSION['username'])){
 
       if(isset($_POST['edit_btn'])){
         $uid=$_POST['edit_id'];
-        $sql = "SELECT * from users WHERE uid='$uid'";
-        $result = mysqli_query($conn, $sql);
+        
+        $obj = new User();
+        $result = $obj->selectUser($uid);
 
         foreach($result as $row)
         { ?>
@@ -105,6 +114,35 @@ if(isset($_SESSION['username'])){
     </div>
   </div>
 
+
+  <script>
+
+        $(document).ready(function(){
+        $(".navbar").click(function(){
+            var x = $(window).width();
+            if (x<850){
+            $(".minimize").toggle();
+            }
+        });
+        });
+
+        $(document).resize(function(){
+        $(".navbar").click(function(){
+            var x = $(window).width();
+            if (x<850){
+            $(".minimize").toggle();
+            }
+        });
+        });
+
+
+        const toggle = document.getElementById("toggle");
+        toggle.onclick = function(){
+            toggle.classList.toggle("active");
+            document.body.classList.toggle('dark_theme');
+        }
+
+    </script>
     
   </body>
 </html>

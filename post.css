@@ -227,9 +227,12 @@ body{
 }
 
 
-
 .home_container{ 
     width:100%;
+    display: flex;
+}
+.content{
+    width: 75%;
 }
 .blog_div{
     width: 350px;

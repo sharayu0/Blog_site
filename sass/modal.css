@@ -1,0 +1,76 @@
+.modal_cont {
+  display: none;
+  position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  background: white;
+  /* padding: 2%; */
+  -webkit-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
+  height: 598px;
+  width: 500px;
+  z-index: 1;
+}
+
+.modal_cont .head {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.modal_cont .close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal_cont form {
+  margin: 17% 3%;
+}
+
+.modal_cont .form-group {
+  height: 35px;
+  width: 80%;
+  margin: auto;
+  margin-top: 43px;
+  line-height: 1.5;
+}
+
+.modal_cont .form-group .label {
+  font-size: 16px;
+}
+
+.modal_cont .form-group .form-control {
+  height: 100%;
+  width: 100%;
+}
+
+.modal_cont .form-btn {
+  height: 35px;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.modal_cont .form-btn .btn {
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-color);
+  font-size: 15px;
+}
+
+.modal_cont .form-btn .btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#show:checked ~ .modal_cont {
+  display: block;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+/*# sourceMappingURL=modal.css.map */

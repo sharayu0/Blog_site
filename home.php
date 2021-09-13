@@ -3,6 +3,10 @@
 
     session_start();
 
+    spl_autoload_register(function($class){
+        require_once($class.'.php');
+    });
+
     if(isset($_SESSION['username'])){
         $uid = $_SESSION['uid'];
         $username = $_SESSION['username'];   
@@ -23,7 +27,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     
-    <link rel="stylesheet" href="home.css" >
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="sass/partials/navbar.css">
+    
   <title>Welcome</title>
 
   </head>
@@ -32,97 +38,25 @@
 
     <div class="container">
         
-        <div class="navbar">
-                <div class="mode">
-                    <div><i class="fas fa-adjust"><a class="navitem text_deco_none" href="#">Dark Mode</a></i></div>
-                    <div class="mode_btn" id="toggle">
-                        <i class="indicator"></i>
-                    </div>    
-                </div>
-                <div class="hr"></div>
-
-            <div class="name">
-                <?php echo $username; ?> 
-            </div>
-            <div class="minimize">
-                <div class="profile">
-                    <div class="profle_pic">
-                    <div class="initial">
-                        <?php echo strtoupper(substr($username,0,1));?>          
-                    </div>
-                    </div>
-
-                   
-
-                    <div class="profile_info">
-                        Hi, my name is <?php echo $username ?> Welcome to my Blog and enjoy Reading!
-                    </div>
-                </div>
-
-                <div class="hr"></div>
-
-                <div class="nav">
-                
-                    <div class="nav_block">
-                    <i class="fas fa-home">
-                            <a class="navitem text_deco_none" href="/Blog_site/home.php">Home</a>
-                        </i>
-                    </div>
+    <?php
+    include './partial/navbar.php';
+    ?>
 
 
-                    <div class="nav_block">
-                        <i class="fas fa-blog">
-                            <a class="navitem text_deco_none" href="/Blog_site/blog.php">Blog</a>
-                        </i>
-                    </div>
-
-
-                    <div class="nav_block">
-                        <i class="fas fa-envelope-open-text">
-                            <a class="navitem text_deco_none" href="#">Contact</a> 
-                        </i>
-                    </div>
-
-
-                    <div class="nav_block">
-                        <i class="fas fa-sign-in-alt">
-                            <a class="navitem text_deco_none" href="/Blog_site/login.php">Log In</a> 
-                        </i>
-                    </div>
-
-                    <div class="nav_block">
-                    <i class="fas fa-sign-out-alt">
-                            <a class="navitem text_deco_none" href="/Blog_site/logout.php">Log Out</a> 
-                        </i>
-                    </div>
-
-                    
-                </div>
-
-        
-
-            </div>
-
-
-
-        </div>
-
-
-        <?php
-
-        $sql = "SELECT * FROM `blog_data` ORDER BY id DESC";
-        $result = mysqli_query($conn, $sql);
-
-        ?>
-
-
+       
         <div class="content">
             <div class="content_head">
                 Enjoy The Blog Reading Journey !!
             </div>
 
         
-                <?php if($result){?>
+                <?php
+
+                    $obj = new User();
+                    $result = $obj->all_post();
+                    if($result){
+
+                ?>
 
 
                 <div class="blog_post">
@@ -151,35 +85,23 @@
     
     <script>
 
-        // function display(){
-        //     var x = document.getElementById("pro_image");
-        //     if(x.style.display == "none") {
-        //         x.style.display = "block";
-        //     } else {
-        //         x.style.display = "none";
-        //     }
-        // }
-
         $(document).ready(function(){
-          $(".navbar").click(function(){
+        $(".navbar").click(function(){
             var x = $(window).width();
             if (x<850){
             $(".minimize").toggle();
             }
-          });
+        });
         });
 
         $(document).resize(function(){
-          $(".navbar").click(function(){
+        $(".navbar").click(function(){
             var x = $(window).width();
             if (x<850){
             $(".minimize").toggle();
             }
-          });
         });
-
-
-
+        });
 
 
         const toggle = document.getElementById("toggle");
@@ -188,14 +110,7 @@
             document.body.classList.toggle('dark_theme');
         }
 
-        
     </script>
-
-<!-- <div class="initial">
-              echo strtoupper(substr($username,0,1));?>          
-    </div> -->
-
-
 
 
   </body>

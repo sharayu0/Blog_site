@@ -3,6 +3,9 @@
 session_start();
 
 include 'dbconnect.php';
+spl_autoload_register(function($class){
+  require_once($class.'.php');
+});
 
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
@@ -21,12 +24,14 @@ if(isset($_SESSION['username'])){
       $password = $_POST['password'];
       $usertype = $_POST['update_usertype'];
 
-      $sql = "UPDATE users SET username='$username', password='$password', usertype='$usertype' WHERE uid='$uid'";
+      $obj = new User();
+      $result = $obj->updateUser($username,$password,$usertype,$uid);
 
-      $result = mysqli_query($conn, $sql);
       if($result){
           header("location:admin_index.php?info=added");
           exit();
+      }else{
+        header("location:admin_index.php");
       }
   }
 

@@ -1,0 +1,186 @@
+body {
+  margin: auto;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: black;
+}
+
+:root {
+  --primary-color: #183654;
+  --secondary-color: #a2d1e7;
+  --ternary-color:#799aaa;
+  --mode-color: #d4d1d1;
+  --post-back-col: white;
+  --text-color:black;
+  --scroll-col:#304e6b;
+}
+
+.dark_theme {
+  --primary-color: #1e2a3a;
+  --secondary-color: #111821;
+  --ternary-color: #223349;
+  --mode-color: #555557b9;
+  --post-back-col: #1e2a3a;
+  --text-color:white;
+  --scroll-col:#1d2e44;
+}
+
+.navbar {
+  width: 25%;
+  height: 100vh;
+  background-color: var(--primary-color);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  overflow: scroll;
+}
+
+.navbar .mode {
+  text-align: center;
+  line-height: 1.5;
+  margin: 11% 0;
+}
+
+.navbar .mode #toggle {
+  position: relative;
+  display: block;
+  width: 69px;
+  margin: auto;
+  height: 25px;
+  margin-top: 8%;
+  border-radius: 160px;
+  border: 4px solid var(--mode-color);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.navbar .mode .indicator {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 29px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 19px;
+  background-color: var(--mode-color);
+  border-radius: 43%;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.navbar .mode #toggle.active .indicator {
+  left: 38px;
+}
+
+.navbar .hr {
+  background-color: rgba(255, 255, 255, 0.582);
+  height: 1px;
+  width: 85%;
+  margin: auto;
+  margin-top: 7%;
+}
+
+.navbar .name {
+  color: white;
+  font-size: 1.7em;
+  font-weight: bold;
+  margin: 9%;
+  text-align: center;
+}
+
+.navbar .minimize .profile {
+  width: 100%;
+  margin-top: 15%;
+  text-align: center;
+}
+
+.navbar .minimize .profile .profle_pic {
+  width: 160px;
+  margin: auto;
+  height: 170px;
+  border-radius: 50%;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar .minimize .profile .profle_pic .initial {
+  font-size: 8em;
+  font-weight: bold;
+  color: #183654;
+}
+
+.navbar .minimize .profile .profile_info {
+  color: white;
+  margin: 9%;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 0 5%;
+  line-height: 1.5;
+}
+
+.navbar .minimize .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  line-height: 1.5;
+  margin: 9% 0;
+}
+
+.navbar .minimize .nav .nav_block {
+  margin: 4% 0;
+}
+
+.navbar .navitem {
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.navbar .fas {
+  color: white;
+}
+
+.navbar .text_deco_none {
+  text-decoration: none;
+}
+
+.filter {
+  display: none;
+  text-align: center;
+  color: white;
+  font-size: 1.7em;
+  font-weight: bold;
+  margin: 9%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-col);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--scroll-col)));
+  background: linear-gradient(transparent, var(--scroll-col));
+  border-radius: 6px;
+}
+/*# sourceMappingURL=navbar.css.map */

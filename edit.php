@@ -20,43 +20,82 @@ if(isset($_SESSION['username'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="post.css">
-    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+    <link rel="stylesheet" href="sass/create.css">
+    <link rel="stylesheet" href="sass/partials/navbar.css">
 
     <title>Blog using PHP & MySQL</title>
 </head>
 <body>
 
-<?php
-    include 'navbar.php';
-    ?>
+    <div class="container">
 
-    <div class="view_container">
-    <div class="view">
+        <?php
+            include './partial/navbar.php';
+        ?>
 
-    <?php foreach($result as $q){ ?>
+        <div class="content">
+            <div class="content_div">
+                <?php foreach($result as $q){ ?>
 
-            <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data">
 
-                <div>
-                    <input type="file" name="image" id="image"><br>
-                </div>
-                
-                    <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
+                        <div>
+                            <input type="file" name="image" id="image" class="image_file"><br>
+                        </div>
+                        
+                            <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
 
-                    <input type="text" name="title" placeholder="Blog Title" class="view_title text_center view_width" value="<?php echo $q['title'];?>"> 
+                        <div> 
+                            <input type="text" name="title" placeholder="Blog Title" class="create_title" value="<?php echo $q['title'];?>"> 
+                        </div> 
+                            <div>
+                            <textarea name="content" class="create_content" cols="30" rows="10"><?php echo $q['content'];?></textarea>
+                        </div>
 
-                    <textarea name="content" class="edit_content" cols="30" rows="10"><?php echo $q['content'];?></textarea>
+                        <div>
+                        <button class="btn" name="update">Update</button>
+                        </div>
 
-                <div>
-                <button class="up_btn" name="update">Update</button>
-                </div>
-            </form>
-        <?php }?>
-    </div>
+                    </form>
+                <?php }?>
+            </div>
+        </div>
          
     </div>
 
+    <script>
+
+        $(document).ready(function(){
+        $(".navbar").click(function(){
+            var x = $(window).width();
+            if (x<850){
+            $(".minimize").toggle();
+            }
+        });
+        });
+
+        $(document).resize(function(){
+        $(".navbar").click(function(){
+            var x = $(window).width();
+            if (x<850){
+            $(".minimize").toggle();
+            }
+        });
+        });
+
+
+        const toggle = document.getElementById("toggle");
+        toggle.onclick = function(){
+            toggle.classList.toggle("active");
+            document.body.classList.toggle('dark_theme');
+        }
+
+    </script>
 
 </body>
 </html>
