@@ -3,9 +3,7 @@
 session_start();
 
 include 'dbconnect.php';
-spl_autoload_register(function($class){
-    require_once($class.'.php');
-});
+include 'classes/autoload.php'; 
 
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
@@ -32,7 +30,6 @@ if(isset($_SESSION['username'])){
 
     
     <link rel="stylesheet" href="sass/create.css">
-    <link rel="stylesheet" href="sass/partials/navbar.css">
 
     <title>Blog using PHP & MySQL</title>
 </head>
@@ -74,6 +71,10 @@ if(isset($_SESSION['username'])){
                     <?php }?>
 
             </div>  
+
+            <?php
+                include './partial/footer.php';
+            ?>
         </div>
             
     </div>
@@ -82,7 +83,7 @@ if(isset($_SESSION['username'])){
     <?php
 
     if(isset($_POST['update'])){
-        $obj = new Updatevalue();
+        $obj = new Blogs();
 
         $id = $_POST["id"];
         $title = $_POST["title"];
@@ -94,10 +95,9 @@ if(isset($_SESSION['username'])){
         move_uploaded_file($tempimgname, "image/$imagename");
         
         $obj->update_blog($imagename,$title, $content, $id); 
-        // mysqli_query($conn, $sql); 
-
-        header("Location: admin_index.php");
-        // exit();
+      
+        header("Location: admin_index.php?info=updated");
+    
     }
 
     ?>

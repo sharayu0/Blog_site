@@ -1,6 +1,6 @@
 <?php 
     include 'dbconnect.php';
-
+    include 'classes/autoload.php'; 
     session_start();
 
 ?>
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="sass/home.css" >
+    <link rel="stylesheet" href="sass/home_ano.css" >
     
    
   <title>Welcome</title>
@@ -23,18 +23,9 @@
   <body>
 
     <div class="main">
-        <div class="navbar">
-            <div>
-                <a href="#" class="logo">BloGEX</a>
-            </div>
-            <div class="navitem">
-                <a class="nav" href="#">Home</a>
-                <a class="nav" href="#">Blog</a>
-                <a class="nav" href="#">Contact</a>
-               <a class="nav" href="#">Login</a>
-                <a class="nav" href="#">Signup </a>
-            </div>
-        </div>
+    <?php
+        include './partial/nav.php';
+    ?>  
 
         <div class="main_div">
             <div class="box">
@@ -109,7 +100,9 @@
             
     </div>
 
-
+    <?php
+        include './partial/footer.php';
+    ?>
 
     
     <!-- <script>

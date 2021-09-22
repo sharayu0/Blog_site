@@ -1,3 +1,8 @@
+@import 'partials/navbar';
+@import 'partials/footer';
+@import 'partials/mixin';
+
+
 
 body{
     margin: auto;
@@ -5,43 +10,47 @@ body{
     color: black;
 }
 
-.container{
-    display: flex;
-    width: 100%;
-
-
-    .content{
-        background-color: var(--secondary-color);
-        width: 75%;
-    
-    }
-    
-}
-
 .index{
+    
     
     .post_div{
         position: fixed;
         top: 3%;
         right: 1%;
+
+        @include responsive(tablet){
+            top: 33%;
+        }
     }
 
     .user_div{
         position: fixed;
         top: 8%;
         right: 1%;
+
+        @include responsive(tablet){
+            top: 37%;
+        }
     }
 
     .add_post_div{
         position: fixed;
         top: 13%;
         right: 1%;
+
+        @include responsive(tablet){
+            top: 41%;
+        }
     }
 
     .add_user_div{
         position: fixed;
         top: 18%;
         right: 1%;
+
+        @include responsive(tablet){
+            top: 45%;
+        }
     }
 
     .fas{
@@ -50,6 +59,15 @@ body{
         padding: 3px 6px;
         width: 25px;
         background: #183654;
+
+
+        @include responsive(laptop){
+            font-size: 16px;
+            color: white;
+            padding: 3px 6px;
+            width: 18px;
+            background: #183654;
+        }
     }
 
     .index_link{
@@ -79,224 +97,143 @@ body{
 #manage_users{
     background-color: var(--ternary-color);
     width: 100%;
-    height: max-content;
+    height: 100vh;
     padding-bottom: 11%;
 }
 
- .admin_manage{
-     padding: 10% 0;
+.admin_manage{
+    padding: 15% 0;
 
-     .utable_div{
-         width: 82%;
-         height: 90%;
-         margin: auto;        
-         overflow-y: auto;
+    .utable_div{
+        width: 82%;
+        height: max-content;
+        margin: auto;        
+        overflow-y: auto;
 
-        .user_table{
-            line-height: 3;
-            margin: auto;
-            border-collapse: collapse;
-            width: 100%;
-
-            .div_cell{
-                padding: 2px 15px;
-                border: 1px solid #ddd;
-                text-align: center;
-        
-                .btn{
-                    background: var(--primary-color);
-                    color: white;
-                    border-radius: 7px;
-                    width: 64px;
-                    padding: 2px 9px;
-                }
-            }
-        
+        @include responsive(laptop){
+            width: 89%;
+            margin-left: 15px;
         }
 
-    }
+        @include responsive(mobile_M){
+            width: 84%;
+            margin-left: 10px;
+        }
+        @include responsive(mobile_S){
+            width: 82%;
+            margin-left: 10px;
+        }
 
+       .user_table{
+           line-height: 3;
+           margin: auto;
+           border-collapse: collapse;
+           width: 100%;
+           min-width: 811px;
+
+           @include responsive(laptop){
+            min-width: 600px;
+            }
+
+            @include responsive(tablet){
+            min-width: 460px;
+            }
+
+           .div_cell{
+               padding: 2px 15px;
+               border: 1px solid #ddd;
+               text-align: center;
+               font-size: 16px;
+
+                @include responsive(laptop){
+                    padding: 2px 6px;
+                    font-size: 13px;
+                }
+
+                @include responsive(tablet){
+                    padding: 2px 6px;
+                    font-size: 10px;
+                }
+       
+                .in_btn{
+                    display: inline-block;
+                }
+
+                .btn{
+                   color: var(--primary-color);
+                   font-size: 1.2rem;
+                   width: 35px;
+                   padding: 5px 8px;
+                   border: none;
+                   background: transparent;
+
+                   &:hover{
+                       background-color: var(--primary-color);
+                       color: white;
+                       text-align: center;
+                   }
+
+                   @include responsive(tablet){
+                    border-radius: 5px;
+                    width: 50px;
+                    padding: 0px 1px;
+                    font-size: 10PX;
+                }
+               }
+           }
+       }
+   }
 
 }
 
-
-
- .admin_manage th{
-     background-color: var(--primary-color);
-     color: #fff;
- }
+.admin_manage th{
+    background-color: var(--primary-color);
+    color: #fff;
+}
 
 .admin_manage tbody tr:nth-child(even){
     background-color: #cee9f1;
 }
+#overlay{   
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
 
 
-// /* bloglist */
+.page_div{
+    margin-top: 4%;
+    padding: 4% 0;
 
+    .pagination{
+        list-style-type: none;
+        text-align: center;
 
+        li{
+            display: inline-block;
 
-// .head {
-//     margin: 1% 0;
-//     white-space: nowrap; 
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     color: var(--text-color);
-// }
-// .img_data{
-//     font-size: 14px;
-//     line-height: 1.6;
-//     margin: 5% 1%;
-// }
+            .page_no{
+                text-decoration: none;
+                background: #183654;
+                color: white;
+                padding: 6px 11px;
+                margin: 4px 4px;
+                border-radius: 7px;
 
-//     .read_btn {
-//         text-decoration: none;
-//         color: var(--text-color);
-//         position: absolute;
-//         bottom: 29px;
-//         color: white;
-//         padding: 7px;
-//         box-shadow: 0 6px 8px 1px rgb(0 0 0 / 20%);
-//         border-radius: 7px;
-//         background-color: #183654;
-       
-//     }
-
-
-// /* dark mode/ light mode */
-
-
-
-
-
-// @media screen and (max-width:1024px) {
-//     .navbar{
-//         width: 35%;
-        
-//     }
-// }
-
-
-
-
-//  @media screen and (max-width:850px) {
-//     .container{
-//         display: flex;
-//         flex-direction: column;
-//     }
-//     .filter {
-//         margin: 10px 0;
-//         font-size: 22px;
-//         line-height: 25px;
-//     }
-//     .minimize{
-//         display: none;
-//     }
-//     .navbar{
-//         width: 100%;
-//         height: max-content;
-//         position: relative;
-       
-//         top: 0;
-//     }
-//     .content {
-//        width: 100%;
-//     }
-//     .content_head {
-//         font-size: 2.2em;
-//     }
-//     .name {
-//         font-size: 2.5em;
-//         font-weight: bold;
-//         margin: 5%;
-//     }
-//     .mode {
-//         text-align: center;
-//         line-height: 1.5;
-//         margin: 3% 0;
-//     }
-//     #toggle {
-       
-//         margin-top: 3%;
-//     } 
-//     .name {
-//         font-size: 2.5em;
-//         font-weight: bold;
-//         margin: 3%;
-//     }
-//     .hr {
-//         background-color: rgba(255, 255, 255, 0.582);
-//         height: 1px;
-//         width: 85%;
-//         margin: auto;
-//         margin-top: 4%;
-//     }
-//     .profile {
-//         width: 100%;
-//         margin-top: 5%;
-//         text-align: center;
-//     }
-//     .profile_info {
-//         color: white;
-//         margin: 3%;
-//         font-size: 1.2em;
-//         text-align: center;
-//         padding: 0 5%;
-//         line-height: 1.5;
-//     }
-//     .nav {
-//         display: flex;
-//         flex-direction: column;
-//         text-align: center;
-//         line-height: 1.5;
-//         margin: 1% 0;
-//     }
-//     .nav_block {
-//         margin: 2% 0;
-//     }
-//     .blog_div {
-//         width: 310px;
-//         height: 500px;
-//         background-color: var(--post-back-col);
-//         color: var(--text-color);
-//         margin: 2% 2%;
-//         position: relative;
-//         box-shadow: 0 6px 8px 1px rgb(0 0 0 / 20%);
-//     }
-//  }
-
-
-
-
-
-
-
-
-
-
-
-// body{
-//     margin: auto;
-//     font-family: Roboto, Helvetica, sans-serif;
-//     color: black;
-// }
-
-// .main{
-    
-// }
-
-// .index{
-    
-// }
-// .user_table{
-//     line-height: 3;
-//     width: 70%;
-//     margin: auto;
-//     margin-top: 6%;
-// }
-// .div_cell{
-//     text-align: center;
-// }
-
-// tr,th,td{
-//     border: 1px solid black;
-// }
+                @include responsive(tablet){
+                    font-size: 13PX;
+                    padding: 4px 11px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}

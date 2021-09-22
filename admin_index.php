@@ -1,11 +1,7 @@
 <?php 
 session_start();
 
-spl_autoload_register(function($class){
-  require_once($class.'.php');
-});
-
-include 'dbconnect.php';
+include 'classes/autoload.php';
 
 if(isset($_SESSION['username'])){
   $uid = $_SESSION['uid'];
@@ -15,18 +11,16 @@ if(isset($_SESSION['username'])){
   header("location:login.php");
 }
 
+$showAlert = false;
+$showError = false;
 
- $showAlert = false;
- $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
      
-
   $username = $_POST["username"];
   $password = $_POST["password"];
   $cpassword = $_POST["cpassword"];
 
   
-
       if($password == $cpassword){
 
           $obj = new Register();
@@ -48,11 +42,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           $showError = "<div class='alert'>Password do not match !!!</div>";
       }  
   
-
 }
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -61,18 +53,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    
+ 
   
     <!-- <link rel="stylesheet" href="home.css" > -->
     <link rel="stylesheet" href="sass/admin_index.css" >
-    <link rel="stylesheet" href="sass/partials/navbar.css">
     <link rel="stylesheet" href="sass/modal.css" >
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    
     <title>Welcome</title>
-    
+   
   </head>
   
   <body>
@@ -103,58 +93,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         include './partial/navbar.php';
       ?>
 
-        
-
 
         <div class="content">
 
-        <input type="checkbox" id="show">  
+          <input type="checkbox" id="show">  
 
 
-            <div class="modal_cont">
-
-                <label for="show" class="close">&times</label>
-
-                <form action="admin_index.php" method="post">        
-                  
-                      <div class="head">Add User</div>
-                        
-                      <div class="form-group">
-                          <label class="label">User Name</label>
-                          <input type="text" class="form-control" id="username" name="username" required>
-                      </div> 
-                
-                      <div class="form-group">
-                          <label class="label">Password</label>
-                          <input type="password" class="form-control" id="password" name="password" required>
-                      </div>
-                      
-                      <div class="form-group">
-                          <label class="label">Confirm Password</label>
-                          <input type="password" class="form-control" id="password" name="cpassword" required>
-                      </div>
-                  
-
-                      <div class="form-group">
-                        
-                        <label for="usertype" class="label">Usertype</label>
-              
-                        <select name="update_usertype" class="form-control">
-                          <option value="admin">admin</option>
-                          <option value="user">user</option>
-                        </select>  
-
-                      </div>
-                  
-
-                      <div class="form-btn">
-                      
-                        <button type="submit" class="btn">Sign Up</button>
-
-                      </div>
-
-                </form> 
-            </div>
+          <?php
+            include './partial/modal.php';
+          ?>
 
             <div class="index">
 
@@ -181,7 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
               <div class="add_user_div">
                 
-              <label for="show" class="index_link">Add User</label>
+                <label for="show" onclick="on()" class="index_link">Add User</label>
                 <i class="fas fa-user-plus post_icon"></i>
 
               </div>
@@ -193,14 +140,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
               <div class="utable_div">
 
+              
+
                 <table class="user_table">
                     <thead>
 
-                          <th class="div_cell">No.</th>
-                          <th class="div_cell">Image</th> 
-                          <th class="div_cell">Title</th> 
-                          <th class="div_cell">Author</th> 
-                          <th class="div_cell">Operation</th>
+                          <th class="div_cell no">No.</th>
+                          <th class="div_cell image">Image</th> 
+                          <th class="div_cell title">Title</th> 
+                          <th class="div_cell Author">Author</th> 
+                          <th class="div_cell Operation">Operation</th>
                           
                         
                     </thead>
@@ -217,24 +166,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                       ?>
 
                         <tr>
-                            <td class="div_cell"><?php echo $row['id']; ?></td>
-                            <td class="div_cell"><?php echo "image/".$row['image'];?></td>
-                            <td class="div_cell post_row"><?php echo $row['title']; ?></td>
-                            <td class="div_cell"><?php echo $row['username']; ?></td>
+                            <td class="div_cell no"><?php echo $row['id']; ?></td>
+                            <td class="div_cell image"><?php echo "image/".$row['image'];?></td>
+                            <td class="div_cell title post_row"><?php echo $row['title']; ?></td>
+                            <td class="div_cell Author"><?php echo $row['username']; ?></td>
                     
 
-                            <td class="div_cell">
+                            <td class="div_cell Operation">
 
-                              <form action="admin_edit_post.php" method="post">
-                                <input type="hidden" name="edit_id" value="<?php echo $row['id']; ?>">
-                                <button type="submit" name="edit_btn" class = "btn">Edit</button>
-                              </form>
-
-                              <form action="admin_dlt_post.php" method="POST" >
-                                <input type="text" hidden value='<?php echo $row['id']?>' name="dlt_id">
-                                <button class="btn " name="delete">Delete</button>
-                              </form>
-
+                              <div class = "in_btn">
+                                <form action="admin_edit_post.php" method="post">
+                                  <input type="hidden" name="edit_id" value="<?php echo $row['id']; ?>">
+                                  <button type="submit" name="edit_btn" class = "btn"><i class="fas fa-edit"></i></button>
+                                </form>
+                              </div>
+                              
+                              <div class="in_btn">
+                                <form action="admin_dlt_post.php" method="POST">
+                                  <input type="text" hidden value='<?php echo $row['id']?>' name="dlt_id">
+                                  <button class="btn " name="delete"><i class="fas fa-trash"></i></button>
+                                </form>
+                              </div>
+                        
                             </td>
                 
                         </tr>
@@ -252,12 +205,66 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
               </div>
 
+              <?php
+                      
+                  $obj = new User();
+                  $pages = $obj->getCount();
+
+
+                  $page = isset($_GET['page']) ? $_GET['page'] : 1;
+  
+                  
+              ?>
+              
+
+              <div class="page_div">
+                <ul class="pagination">
+
+                <?php if($page > 1){ 
+                    $previous = $page - 1; ?>
+                    <li>
+                    <a href="admin_index.php?page=<?=$previous; ?>" class="page_no">&laquo;</a>
+                    </li>
+                  <?php } else{ 
+                    // $previous = 1;?>
+                    <li>
+                    <a href="admin_index.php?page=<?=$page; ?>" class="page_no" hidden>&laquo;</a>
+                    </li>
+                  <?php } ?>
+
+                 
+                  
+                  <?php
+
+                        for($i = 1 ; $i<= $pages; $i++) : ?>
+                          <li><a href="admin_index.php?page=<?=$i; ?>" class="page_no"><?=$i; ?></a></li>
+                          <?php endfor; 
+                  
+                  ?>
+
+                  <?php if($page < $pages){
+                    $nextt = $page + 1; ?>
+                    <li>
+                      <a href="admin_index.php?page=<?=$nextt; ?>" class="page_no">&raquo;</a>
+                    </li>
+                    <?php } else{ 
+                    $nextt = $pages; ?>
+                    <li>
+                      <a href="admin_index.php?page=<?=$nextt; ?>" class="page_no" hidden>&raquo;</a>
+                    </li>
+                  <?php } ?>
+ 
+                </ul>
+              </div>
           </section>
 
           <section id="manage_users" class="admin_manage">
-          
+
 
             <div class="utable_div">
+
+        
+
               <table class="user_table">
                   <thead>
                     <tr>
@@ -265,8 +272,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <th class="div_cell">Username</th> 
                         <th class="div_cell">Password</th> 
                         <th class="div_cell">Usertype</th>
-                        <th class="div_cell">Edit</th>
-                        <th class="div_cell">Delete</th>
+                        <th class="div_cell">Operation</th>
+                        
                       </tr>
                   </thead>
                 
@@ -284,18 +291,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                       <td class="div_cell"><?php echo $row['usertype']; ?></td>
 
                       <td class="div_cell">
-                        <form action="admin_edit_user.php" method="post">
-                          <input type="text" hidden name="edit_id" value="<?php echo $row['uid']; ?>">
-                          <button type="submit" name="edit_btn" class = "btn">Edit</button>
-                        </form>
-                      </td>
+                        
+                        <div class="in_btn">
+                          <form action="admin_edit_user.php" method="post">
+                            <input type="text" hidden name="edit_id" value="<?php echo $row['uid']; ?>">
 
-                      <td class="div_cell">
-                        <form action="admin_dlt_user.php" method="POST">
-                          <input type="hidden" name="delete_id" value="<?php echo $row['uid']; ?>">
-                          
-                          <button name="delete_btn" class = "btn">Delete</button>
-                        </form>
+                            
+
+                            <button type="submit" name="edit_btn" class = "btn"><i class="fas fa-user-plus post_icon"></i></button>
+                          </form>
+                        </div>
+                   
+                        
+
+                        <div class="in_btn">
+                          <form action="admin_dlt_user.php" method="POST">
+                            <input type="hidden" name="delete_id" value="<?php echo $row['uid']; ?>">
+                            
+                            <button name="delete_btn" class = "btn"><i class="fas fa-trash"></i></button>
+                          </form>
+                        </div>
+          
                       </td>
 
                     </tr>
@@ -310,8 +326,76 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               
               </table>
             </div>
+
+            <?php
+                      
+                $obj = new User();
+                $pages = $obj->getCountUser();
+                $user_page = isset($_GET['user_page']) ? $_GET['user_page'] : 1;
+               
+                // if($user_page > 1){
+                //   $pre = $user_page - 1;
+                // }
+                // else{
+                //   $pre = 1;
+                // }
+
+                // if($user_page < $pages){
+                //   $next = $user_page + 1;
+                // }
+                // else{
+                //   $next = $pages;
+                // }
+
+            ?>
+
+            <div class="page_div">
+                <ul class="pagination">
+
+                  <?php if($user_page > 1){ 
+                    $pre = $user_page - 1; ?>
+                    <li>
+                      <a href="admin_index.php?user_page=<?=$pre; ?>" class="page_no">&laquo;</a>
+                    </li>
+                  <?php } else{ 
+                    $pre = 1;?>
+                    <li>
+                      <a href="admin_index.php?user_page=<?=$pre; ?>" class="page_no" hidden>&laquo;</a>
+                    </li>
+                  <?php } ?>
+
+                  <?php
+                    
+                      for($i = 1 ; $i<= $pages; $i++) : ?>
+                        <li><a href="admin_index.php?user_page=<?=$i; ?>" class="page_no"><?=$i; ?></a></li>
+                      <?php endfor; 
+                  
+                  ?>
+
+                  <?php if($user_page < $pages){
+                    $next = $user_page + 1; ?>
+                    <li>
+                      <a href="admin_index.php?user_page=<?=$next; ?>" class="page_no">&raquo;</a>
+                    </li>
+                    <?php } else{ 
+                    $next = $pages; ?>
+                    <li>
+                    <a href="admin_index.php?user_page=<?=$next; ?>" class="page_no" hidden>&raquo;</a>
+                    </li>
+                  <?php } ?>
+
+                </ul>
+              </div>
           </section>
                 
+          <?php
+            include './partial/footer.php';
+          ?>
+
+        </div>
+
+        <div id="overlay">
+
         </div>
 
     </div>
@@ -320,6 +404,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   
 
     <script>
+
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    }
 
 
 

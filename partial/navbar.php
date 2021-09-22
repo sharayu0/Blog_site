@@ -1,16 +1,16 @@
 <div class="navbar">
-                <div class="mode">
-                    <div><i class="fas fa-adjust"><a class="navitem text_deco_none" href="#">Dark Mode</a></i></div>
-                    <div class="mode_btn" id="toggle">
-                        <i class="indicator"></i>
-                    </div>    
-                </div>
-                <div class="hr"></div>
-
+                
+ 
             <div class="name">
                 <?php echo $username; ?> 
+
+                
+                <label>&#9776</label>
             </div>
-            <div class="minimize">
+
+            
+            
+            <div class="minimize"> 
                 <div class="profile">
                     <div class="profle_pic">
                       <div class="initial">
@@ -26,6 +26,7 @@
 
                 <div class="hr"></div>
 
+
                 <div class="nav">
                 
                     <div class="nav_block">
@@ -37,7 +38,7 @@
 
                     <div class="nav_block">
                         <i class="fas fa-blog">
-                            <a class="navitem text_deco_none" href="/Blog_site/blog.php">Blog</a>
+                            <a class="navitem text_deco_none" href="/Blog_site/mypost.php">My Posts</a>
                         </i>
                     </div>
 
@@ -57,11 +58,17 @@
 
                     
                 </div>
-
-        
+                
+                <div class="hr"></div>
+                <div class="mode">
+                    <div><i class="fas fa-adjust"><a class="navitem text_deco_none" href="#">Dark Mode</a></i></div>
+                    <div class="mode_btn" id="toggle">
+                        <i class="indicator"></i>
+                    </div>    
+                </div>
 
             </div>
 
-
+                
 
         </div>

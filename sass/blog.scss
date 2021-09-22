@@ -1,22 +1,46 @@
+@import 'partials/navbar';
+@import 'partials/footer';
+@import 'partials/mixin';
+
+
 body{
     margin: 0;
 }
-.container {
-    width: 100%;
-    display: flex; 
-}
-.content{
-    width: 75%;
-    background: var(--secondary-color);
+
+    .content_head{
+        font-size: 2.5em;
+        font-weight: bold;
+        text-align: center;
+        margin: 6%;
+        color: var(--text-color);
+
+        @include responsive(tablet){
+            font-size: 2em;
+        }
+        @include responsive(mobile_M){
+            font-size: 1.7em;
+        }
+    }
 
     .new_post{
         border: 1px solid black;
-        width: 20%;
+        width: 24%;
         margin: auto;
         padding: 12px 18px;
         text-align: center;
         margin-top: 7%;
         margin-bottom: 7%;
+
+        @include responsive(laptop){
+            width: 32%;
+        }
+
+        @include responsive(tablet){
+            width: 57%;
+        }
+        @include responsive(mobile_S){
+            width: 78%;
+        }
 
         &:hover{
             background-color: var(--primary-color);
@@ -27,29 +51,40 @@ body{
             text-decoration: none;
             color: black;
             font-size: 20px;
-            
         }
-
     }
-}
 
-.blog_post{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-
+    .blog_post{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
     
     .blog_div {
-        width: 265px;
+        width: 270px;
         height: 500px;
+        overflow: hidden;
+        border-radius: 12px;
         background-color: var(--post-back-col);
         color: var(--text-color);
         margin: 2% 2%;
         position: relative;
         box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
+ 
+        @include responsive(laptop){
+            width: 45%;
+        }
 
-        
+        @include responsive(mobile_M){
+            width: 85%;
+            margin: 6% 2%;
+        }
+
+        @include responsive(mobile_S){
+            width: 100%;
+            margin: 6% 0%;
+        }
+
         .blog_img {
             height: 46%;
 
@@ -75,6 +110,7 @@ body{
                 font-size: 14px;
                 line-height: 1.6;
                 margin: 5% 1%;
+                text-align: justify;
             }
 
             .read_btn {
@@ -91,42 +127,4 @@ body{
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

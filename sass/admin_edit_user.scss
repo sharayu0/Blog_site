@@ -1,0 +1,82 @@
+@import 'partials/navbar';
+@import 'partials/footer';
+@import 'partials/mixin';
+
+.body{
+    margin: 0;
+}
+
+    .content_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        .in_data{
+            
+            height: max-content;
+            width: 55%;
+            background: white;
+
+            @include responsive(laptop){
+                width: 55%;
+            }
+            @include responsive(tablet){
+                width: 55%;
+            }
+            @include responsive(mobile_M){
+                width: 80%;
+            }
+            @include responsive(mobile_S){
+                width: 90%;
+            }
+
+            form{
+                margin: 17% 7%;
+    
+                .head{
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+                .form-group{
+                    height: 30px;
+                    width: 100%;
+                    margin: auto;
+                    margin-top: 3rem;
+                    line-height: 1.5;
+    
+                    .label{
+                        font-size: 16px;
+                    }
+    
+                    .form-control{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .form-btn{
+                    margin-top: 37px;
+                    
+                   
+                    .button{
+                        display: block;
+                        width: 100%;
+                        background: #a2d1e7;
+                        padding: 7px 0;
+                        text-align: center;
+                        color: white;
+                        text-decoration: none;
+                        border: 1px solid black;
+                        margin-top: 3rem;
+                        font-size: 16px;
+                    }
+                    .edit_btn{
+                        margin-top: 2rem;
+                    }
+                }
+            }
+        }
+  
+        
+    }

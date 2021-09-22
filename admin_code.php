@@ -3,16 +3,14 @@
 session_start();
 
 include 'dbconnect.php';
-spl_autoload_register(function($class){
-  require_once($class.'.php');
-});
+include 'classes/autoload.php';
 
-if(isset($_SESSION['username'])){
+  if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
     $username = $_SESSION['username'];
-  
 
-  }else{
+  }
+  else{
     header("location:login.php");
   }
 

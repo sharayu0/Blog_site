@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-
-include 'dbconnect.php';
-include 'logic.php';
+include 'classes/autoload.php'; 
 
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
@@ -26,7 +24,6 @@ if(isset($_SESSION['username'])){
 
     
     <link rel="stylesheet" href="sass/create.css">
-    <link rel="stylesheet" href="sass/partials/navbar.css">
 
     <title>Blog using PHP & MySQL</title>
 </head>
@@ -40,7 +37,17 @@ if(isset($_SESSION['username'])){
 
         <div class="content">
             <div class="content_div">
-                <?php foreach($result as $q){ ?>
+
+            <?php
+            $obj = new Blogs();
+
+            if(isset($_REQUEST['id'])){
+            
+              $id = $_REQUEST['id'];
+              $result = $obj->select_post($id);
+            }
+            
+                 foreach($result as $q){ ?>
 
                     <form method="POST" enctype="multipart/form-data">
 
@@ -64,9 +71,36 @@ if(isset($_SESSION['username'])){
                     </form>
                 <?php }?>
             </div>
+
+            <?php
+                include './partial/footer.php';
+            ?>
+
         </div>
          
     </div>
+
+    <?php
+    if(isset($_POST["update"])){
+
+        $obj1 = new Blogs();
+        $id = $_POST["id"];
+        $imagename = $_FILES['image']['name']; 
+        $tempimgname = $_FILES['image']['tmp_name'];
+
+        move_uploaded_file($tempimgname, "image/$imagename");
+
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+
+        $obj1->update_blog($imagename,$title, $content, $id);       
+
+        if($obj1){
+            header("Location: mypost.php?info=updated");
+        exit(); 
+        }
+    }
+?>
 
     <script>
 

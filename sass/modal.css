@@ -1,21 +1,44 @@
 .modal_cont {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  /* left: 50%; */
+  left: 50%;
   background: white;
-  /* padding: 2%; */
   -webkit-transform: translate(50%, -50%);
-  transform: translate(50%, -50%);
-  height: 598px;
-  width: 500px;
-  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  z-index: 3;
+}
+
+@media only screen and (max-width: 1024px) {
+  .modal_cont {
+    width: 44%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal_cont {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .modal_cont {
+    width: 80%;
+  }
 }
 
 .modal_cont .head {
   text-align: center;
   font-size: 25px;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 1024px) {
+  .modal_cont .head {
+    font-size: 20px;
+    margin-bottom: -16px;
+  }
 }
 
 .modal_cont .close {
@@ -30,16 +53,53 @@
   margin: 17% 3%;
 }
 
+@media only screen and (max-width: 1024px) {
+  .modal_cont form {
+    margin: 13% 3%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal_cont form {
+    margin: 7% 3%;
+  }
+}
+
 .modal_cont .form-group {
   height: 35px;
-  width: 80%;
+  width: 85%;
   margin: auto;
   margin-top: 43px;
   line-height: 1.5;
 }
 
+@media only screen and (max-width: 1024px) {
+  .modal_cont .form-group {
+    height: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal_cont .form-group {
+    margin-top: 38px;
+    height: 25px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .modal_cont .form-group {
+    height: 20px;
+  }
+}
+
 .modal_cont .form-group .label {
   font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .modal_cont .form-group .label {
+    font-size: 12px;
+  }
 }
 
 .modal_cont .form-group .form-control {
@@ -47,11 +107,30 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 320px) {
+  .modal_cont .form-group .form-control {
+    font-size: 10px;
+  }
+}
+
 .modal_cont .form-btn {
   height: 35px;
   width: 80%;
   margin: auto;
   margin-top: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .modal_cont .form-btn {
+    width: 85%;
+    height: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal_cont .form-btn {
+    height: 25px;
+  }
 }
 
 .modal_cont .form-btn .btn {

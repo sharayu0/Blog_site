@@ -1,21 +1,37 @@
+@import 'partials/mixin';
 
 .modal_cont{
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
-    /* left: 50%; */
+    left: 50%;
     background: white;
-    /* padding: 2%; */
     -webkit-transform: translate(50%, -50%);
-    transform: translate(50%, -50%);
-    height: 598px;
-    width: 500px;
-    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    z-index: 3;
+
+    @include responsive(laptop){
+        width: 44%;
+    }
+
+    @include responsive(tablet){
+        width: 50%;
+    }
+
+    @include responsive(mobile_M){
+        width: 80%;
+    }
 
     .head{
         text-align: center;
         font-size: 25px;
         font-weight: bold;
+
+        @include responsive(laptop){
+            font-size: 20px;
+            margin-bottom: -16px;
+        }
     }
 
     .close{
@@ -28,22 +44,51 @@
 
     form{
         margin: 17% 3%;
+
+        @include responsive(laptop){
+            margin: 13% 3%;
+        }
+
+        @include responsive(tablet){
+            margin: 7% 3%;
+        }
     }
 
     .form-group{
         height: 35px;
-        width: 80%;
+        width: 85%;
         margin: auto;
         margin-top: 43px;
         line-height: 1.5;
 
+        @include responsive(laptop){
+            height: 30px;
+        }
+
+        @include responsive(tablet){
+            margin-top: 38px;
+            height: 25px;
+        }
+
+        @include responsive(mobile_S){
+            height: 20px;
+        }
+
         .label{
             font-size: 16px;
+
+            @include responsive(tablet){
+                font-size: 12px;
+            }
         }
 
         .form-control{
             height: 100%;
             width: 100%;
+
+            @include responsive(mobile_S){
+                font-size: 10px;
+            }
         }
     }
 
@@ -52,6 +97,15 @@
         width: 80%;
         margin: auto;
         margin-top: 50px;
+
+        @include responsive(laptop){
+            width: 85%;
+            height: 30px;
+        }
+
+        @include responsive(tablet){
+            height: 25px;
+        }
 
         .btn{
             height: 100%;

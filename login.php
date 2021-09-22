@@ -2,9 +2,7 @@
 session_start();
 ob_start();
     include 'dbconnect.php';
-    spl_autoload_register(function($class){
-        require_once($class.'.php');
-    });
+    include 'classes/autoload.php';
     
     $login = false;
     $showError = false;
@@ -16,14 +14,6 @@ ob_start();
          
         $obj= new Login_check(); 
         $result = $obj->login($username,$password); 
-
-        
-            
-
-        // $result = mysqli_query($conn, $sql);
-        // $num = mysqli_num_rows($result);
-        // $result= $this->mysqli->query($sql);
-        // $num = $result->num_rows;
         
         if($result < 1){
             $showError = "<div class='alert'>Invalid Credentials !!!</div>";
@@ -71,27 +61,17 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="sass/partials/animation.css" >
     <link rel="stylesheet" href="sass/login.css" >
+ 
     <title>Login</title>
   </head>
 <body>
- 
+
 <div class="wrapper">
 
-    <div class="navbar">
-        <div>
-            <a href="#" class="logo">BloGEX</a>
-        </div>
-        <div class="navitem">
-            <a class="nav" href="/Blog_site/home_ano.php">Home</a>
-            <a class="nav" href="#">Blog</a>
-            <a class="nav" href="#">Contact</a>
-        <a class="nav" href="#">Login</a>
-            <a class="nav" href="/Blog_site/signup.php">Signup </a>
-        </div>
-    </div>       
-
+    <?php
+        include './partial/nav.php';
+    ?>      
 
     <div class="log_container">
 
@@ -107,8 +87,7 @@ ob_start();
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username" required value="<?php if(isset($_COOKIE['usercookie'])){ echo $_COOKIE['usercookie']; } ?>">
                 </div> 
 
-            </div>
-            
+            </div>           
 
             <div class="form-group">
 
@@ -119,10 +98,8 @@ ob_start();
                 </div>   
             </div>
 
-            
                 <input type="checkbox" class="form-control" name="rememberme"> <span class="remember_me">Remember Me</span>
-            
-            
+     
             <button type="submit" class="signup">Log In</button>
 
             <div class="login_ref">

@@ -3,9 +3,7 @@
 session_start();
 
 include 'dbconnect.php';
-spl_autoload_register(function($class){
-  require_once($class.'.php');
-});
+include 'classes/autoload.php';
 
 
 if(isset($_SESSION['username'])){
@@ -29,88 +27,82 @@ if(isset($_SESSION['username'])){
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
-
-    <link rel="stylesheet" href="navbar.css" >
-    <link rel="stylesheet" href="admin_index.css" >
+    <link rel="stylesheet" href="sass/admin_edit_user.css" >
     
   <title>Welcome</title>
 
   </head>
 
   <body>
+  <div class="container">
+
     <?php
-    include 'navbar.php';
+    include './partial/navbar.php';
     ?>
 
- 
-  <div class="view_container">
-    <div class="head">
-      Edit User Profile
-    </div>
-    <div class="view">
 
+    <div class="content">
+      <div class="content_div">
 
-<?php
-
-      if(isset($_POST['edit_btn'])){
-        $uid=$_POST['edit_id'];
-        
-        $obj = new User();
-        $result = $obj->selectUser($uid);
-
-        foreach($result as $row)
-        { ?>
-
-          <form action="admin_code.php" method="POST">
-            
-            <input type="text" name="uid" value="<?php echo $row['uid'] ?>">
-            <div class="form-group">
-                <div class="label">
-                    <label for="username">Username  </label>
-                </div>
-
-                <div class="input">
-                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $row['username'] ?>">
-                </div>   
-            </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label for="password">Password  </label>
-                </div>
-
-                <div class="input">
-                    <input type="password" class="form-control" id="password" name="password" value="<?php echo $row['username'] ?>">
-                </div>   
-            </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label for="usertype">Usertype</label>
-                </div>
-                <div class="input">
-                  <select name="update_usertype">
-                    <option value="admin">admin</option>
-                    <option value="user">user</option>
-                  </select>
-                    <!-- <input type="text" class="form-control" id="usertype" name="usertype" value="<?php echo $row['usertype'] ?>"> -->
-                </div>
-            </div>
-
-            <div>
-              <a href="admin_index.php" class="btn-danger">Cancel</a>
-              <button type="submit" name="update_btn">Update</button>
-            </div>
-
-          </form>
 
         <?php
-        }
-      }
-  ?>
-      
-  
+
+            if(isset($_POST['edit_btn'])){
+              $uid=$_POST['edit_id'];
+              
+              $obj = new User();
+              $result = $obj->selectUser($uid);
+
+              foreach($result as $row)
+              { ?>
+
+              <div class="in_data">
+                <form action="admin_code.php" method="POST">
+                
+                  <div class="head">
+                    Edit User Profile
+                  </div>
+
+                  <input type="hidden" name="uid" value="<?php echo $row['uid'] ?>">
+                  
+                  <div class="form-group">
+                      <label for="username" class="label">Username  </label>
+                      
+                      <input type="text" class="form-control" id="username" name="username" value="<?php echo $row['username'] ?>">    
+                  </div>
+
+                  
+                  <div class="form-group">
+                          <label for="usertype" class="label">Usertype</label>
+
+                        <select name="update_usertype" class="form-control">
+                          <option value="admin">admin</option>
+                          <option value="user">user</option>
+                        </select>
+              
+                  </div>
+
+                  <div class="form-btn">
+
+                    <button type="submit" name="update_btn" class="button">Update</button>
+                    <a href="admin_index.php" class="button edit_btn">Cancel</a>
+                    
+                  </div>
+
+                </form>
+              </div>
+
+              <?php
+              }
+            }
+        ?>
+          
+      </div>
+
+      <?php
+        include './partial/footer.php';
+      ?>
+
     </div>
   </div>
 

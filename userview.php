@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 include 'classes/autoload.php'; 
@@ -16,7 +16,9 @@ if(isset($_SESSION['username'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
@@ -25,8 +27,7 @@ if(isset($_SESSION['username'])){
 
 
     <link rel="stylesheet" href="sass/view.css">
-   
-
+  
     <title>Blog using PHP & MySQL</title>
 </head>
 <body>
@@ -41,8 +42,8 @@ if(isset($_SESSION['username'])){
       <div class="content">
 
         <div class="view">
-        
-            <?php
+     
+          <?php
             $obj = new Blogs();
 
             if(isset($_REQUEST['id'])){
@@ -50,7 +51,7 @@ if(isset($_SESSION['username'])){
               $id = $_REQUEST['id'];
               $result = $obj->select_post($id);
             }
-          
+
             foreach($result as $q){?>
 
               <div class="view_title">
@@ -68,15 +69,12 @@ if(isset($_SESSION['username'])){
                 </div>
                 
                 
-                <div class="view_btn">
-                      <a href="edit.php?id=<?php echo $q['id']?>" class="button edit_btn" name="edit">Edit</a>
+                
+                      
 
-                      <form method="POST">
-                        <input type="text" hidden value='<?php echo $q['id']?>' name="id">
-                        <button class="button" name="delete">Delete</button>
-                      </form>
-                    </div>
-                </div>
+                      
+                   
+              </div>
             <?php } ?>
         </div>
 
@@ -87,16 +85,7 @@ if(isset($_SESSION['username'])){
       </div>
     </div>
 
-    <?php
-    if(isset($_REQUEST['delete'])){
-      $obj = new Blogs();
-       $id = $_REQUEST['id']; 
-       $obj-> delete_blog($id);
-     
-       header("Location: mypost.php?info=deleted");
-       exit();
-   }
-   ?>
+
     <script>
 
     $(document).ready(function(){

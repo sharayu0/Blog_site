@@ -1,11 +1,8 @@
 <?php 
-    include 'dbconnect.php';
 
     session_start();
 
-    spl_autoload_register(function($class){
-        require_once($class.'.php');
-    });
+    include 'classes/autoload.php'; 
 
     if(isset($_SESSION['username'])){
         $uid = $_SESSION['uid'];
@@ -25,10 +22,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="sass/partials/navbar.css">
+    <link rel="stylesheet" href="sass/blog.css">
     
   <title>Welcome</title>
 
@@ -38,9 +33,9 @@
 
     <div class="container">
         
-    <?php
-    include './partial/navbar.php';
-    ?>
+        <?php
+        include './partial/navbar.php';
+        ?>
 
 
        
@@ -69,17 +64,24 @@
                                 <h3  class="head"><?php echo $q['title'];?></h3 >
                                 <p class="img_data"><?php echo substr($q['content'], 0, 200);?></p>
                                 <div class="btn_read">
-                                    <a href="view.php?id=<?php echo $q['id']?>" class="read_btn">Read More</a>
+                                    <a href="userview.php?id=<?php echo $q['id']?>" class="read_btn">Read More</a>
                                 </div>
                             </div>
                         </div>
                     <?php }?>
-                </div>
 
-            <?php }?>
+                <?php }?>
+            </div>
+          
+            <?php
+                include './partial/footer.php';
+            ?>
             
     </div>
 
+
+
+   
 
 
     

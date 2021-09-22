@@ -1,18 +1,11 @@
 <?php 
-spl_autoload_register(function($class){
-    require_once($class.'.php');
-});
-
+include 'classes/autoload.php';
 include 'dbconnect.php';
 
 $obj = new Blogs();
 
-
-
-
     $sql = "SELECT * from blog_data";
     $result = mysqli_query($conn, $sql);
-
 
     if(isset($_POST["new_post"])){
        
@@ -25,12 +18,11 @@ $obj = new Blogs();
         
         $content = $_POST["content"];
         $uid = $_SESSION['uid'];
-     
+
         $obj->insert_blog($imagename,$title, $content, $uid);
 
         header("Location: blog.php?info=added");
     } 
-
 
     if(isset($_REQUEST['id'])){
 
@@ -39,25 +31,26 @@ $obj = new Blogs();
         $result = mysqli_query($conn, $sql);
     }
 
-
     if(isset($_POST["update"])){
 
-        $obj1 = new Updatevalue();
-
+        $obj1 = new Blogs();
         $id = $_POST["id"];
         $imagename = $_FILES['image']['name']; 
         $tempimgname = $_FILES['image']['tmp_name'];
-       
+
         move_uploaded_file($tempimgname, "image/$imagename");
+
         $title = $_POST["title"];
         $content = $_POST["content"];
 
-        $obj1->update($imagename,$title, $content, $id);       
+        $obj1->update_blog($imagename,$title, $content, $id);       
 
-        header("Location: blog.php?info=updated");
-        exit(); 
+        if($obj1){
+            header("Location: blog.php?info=updated");
+         exit(); 
+        }
     }
-
+ 
 
     if(isset($_REQUEST['delete'])){
        

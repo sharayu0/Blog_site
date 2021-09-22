@@ -1,0 +1,102 @@
+.footer{
+    width: 100%;
+    background-color: #f8f8f8;
+    color: #304e6b;
+
+    @include responsive(laptop){
+        font-size: 14px;
+    }
+
+    @include responsive(tablet){
+        font-size: 12px;
+    }
+    @include responsive(mobile_M){
+        line-height: 1.5;
+    }
+
+    .footer-cont{
+        display: flex;
+        flex-wrap: wrap;
+        width: 82%;
+        margin: auto;
+        padding: 1rem 0;
+        justify-content: space-between;
+
+        
+        @include responsive(tablet){
+            font-size: 12px;
+            width: 90%;
+        }
+
+        .foot-info-div{
+            width: 42%;
+            display: flex;
+            flex-direction: column;
+
+            .about-info{
+                text-align: justify;
+            }
+
+            @include responsive(mobile_M){
+                width: 100%;
+            }
+        }
+
+        .foot-div{
+            width: max-content;
+            display: flex;
+            flex-direction: column;
+            padding: 0 4%;
+
+            @include responsive(mobile_M){
+                width: max-content;
+                margin: 9px -3%;
+            }
+
+            .foot-link{
+                text-decoration: none;
+                color: #304e6b;
+            }
+
+        }
+    }
+    .foot-icon{
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 6px 0;
+        line-height: 3;
+        text-align: center;
+        
+        @include responsive(tablet){
+            line-height: 2.5;
+        }
+
+        h4{
+            margin: 0;
+        }
+
+        .icons{
+
+            .fab, .fas{
+                color: #304e6b;
+                font-size: 1.5rem;
+                margin: 9px;
+
+                @include responsive(tablet){
+                    font-size: 1.3rem;
+                    margin: 7px;
+                }
+            }
+        }
+    }
+
+    .footer-bottom-text{
+        text-align: center;
+        background: #d4d1d1;
+        padding: 15px 0;
+        margin: 0;
+
+    }
+}

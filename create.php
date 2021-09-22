@@ -1,9 +1,9 @@
 <?php
 
 session_start();
+include 'classes/autoload.php'; 
 
-include 'dbconnect.php';
-include 'logic.php';
+
 
 if(isset($_SESSION['username'])){
     $uid = $_SESSION['uid'];
@@ -26,7 +26,6 @@ if(isset($_SESSION['username'])){
 
     
     <link rel="stylesheet" href="sass/create.css">
-    <link rel="stylesheet" href="sass/partials/navbar.css">
 
     <title>Blog using PHP & MySQL</title>
 </head>
@@ -54,15 +53,37 @@ if(isset($_SESSION['username'])){
                             <textarea name="content" class="create_content"></textarea>
                         </div>
                     </div>
-                    <div>
+                    <div class="btn-div">
                         <button name="new_post" class="btn">Add Post</button>
                     </div>
                 </form>
-            </div>   
+            </div>  
+            
+            <?php
+                include './partial/footer.php';
+            ?>
+            
         </div>
     </div>
+    <?php 
+       if(isset($_POST["new_post"])){
 
+        $obj = new Blogs();
+       $imagename = $_FILES['image']['name']; 
+       $tempimgname = $_FILES['image']['tmp_name'];
+      
+       move_uploaded_file($tempimgname, "image/$imagename");
 
+       $title = $_POST["title"];
+       
+       $content = $_POST["content"];
+       $uid = $_SESSION['uid'];
+
+       $obj->insert_blog($imagename,$title, $content, $uid);
+
+       header("Location: mypost.php?info=added");
+        } 
+    ?>
 
 
 </body>
