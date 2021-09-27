@@ -97,6 +97,7 @@
         width: 80%;
         margin: auto;
         margin-top: 50px;
+        text-align: center;
 
         @include responsive(laptop){
             width: 85%;
@@ -109,7 +110,7 @@
 
         .btn{
             height: 100%;
-            width: 100%;
+            width: 35%;
             background-color: var(--secondary-color);
             font-size: 15px;
 

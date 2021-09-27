@@ -44,7 +44,7 @@ body{
 
         &:hover{
             background-color: var(--primary-color);
-            color: white;
+            color: #fff !important;
         }
 
         .newbtn{
@@ -103,7 +103,7 @@ body{
                 white-space: nowrap; 
                 overflow: hidden;
                 text-overflow: ellipsis;
-                color: var(--text-color);
+                color: var(--primary-color);
             }
 
             .img_data {
@@ -111,6 +111,15 @@ body{
                 line-height: 1.6;
                 margin: 5% 1%;
                 text-align: justify;
+                color: #787c81;
+            }
+
+            .author{
+                font-size: 16px;
+                color: #a2a1a9;
+                position: absolute;
+                right: 17px;
+                bottom: 70px;
             }
 
             .read_btn {
@@ -122,9 +131,10 @@ body{
                 padding: 7px;
                 box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
                 border-radius: 7px;
-                background-color: #183654;
+                background-color: var(--scroll-col);
             }
         }
+
     }
 }
 

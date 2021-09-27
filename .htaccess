@@ -1,0 +1,15 @@
+# mod_rewrire starts here
+
+ReWriteEngine on
+
+# does not apply to existing directories , meaning that if the folder exists on the server then don't change anything and don't run the rule
+
+ReWriteCond %{REQUEST_FILENAME} !-d
+
+# Check for file in directory with .html exension
+
+ReWriteCond %{REQUEST_FILENAME}\.php -f
+
+# here we actually show the page that has the .php extension
+
+ReWriteRule ^(.*)$ $1.php [NC,L]
