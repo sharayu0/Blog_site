@@ -4,7 +4,7 @@ ob_start();
 include '../classes/autoload.php';
 
 $login = false;
-$showError = false;
+$showAlert = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = $_POST["username"];
@@ -14,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $obj->login($username, $password);
 
     if ($result < 1) {
-        $showError = "<div class='alert'>Invalid Credentials !!!</div>";
+        $showAlert = "<div class='alert'>Invalid Credentials !!!</div>";
     } else {
-        $login = true;
+    
         foreach ($result as $row) {
 
             $_SESSION['username'] = $row['username'];
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         setcookie('usercookie', $username, time() + 86400);
                         setcookie('passwordcookie', base64_encode($password), time() + 86400);
-                        header("location: admin_index.php");
+                        header("location: ../admin/admin_index.php");
                     } else {
                         header("location: ../admin/admin_index.php");
                     }
@@ -70,6 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include '../partial/nav.php';
         ?>
 
+        <?php
+            if ($showAlert) {
+                echo $showAlert;
+            }
+        ?>
         <div class="log_container">
 
             <form action="login.php" method="post">
@@ -81,9 +86,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="input">
                         <span class="fa fa-user">
                         </span>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required value="<?php if (isset($_COOKIE['usercookie'])) {
-                                                                                                                                            echo $_COOKIE['usercookie'];
-                                                                                                                                        } ?>">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required value="<?php if (isset($_COOKIE['usercookie'])) 
+                        {
+                            echo $_COOKIE['usercookie'];
+                        } ?>">
                     </div>
 
                 </div>
@@ -93,9 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="input">
                         <span class="fas fa-lock">
                         </span>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if (isset($_COOKIE['passwordcookie'])) {
-                                                                                                                                    echo base64_encode($_COOKIE['passwordcookie']);
-                                                                                                                                } ?>">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if (isset($_COOKIE['passwordcookie'])) 
+                        {
+                            echo base64_encode($_COOKIE['passwordcookie']);
+                        } ?>">
                     </div>
                 </div>
 
@@ -127,14 +134,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div></div>
         </div>
 
-        <?php
-        if ($login) {
-            echo ' You are logged in... ';
-        }
-        if ($showError) {
-            echo $showError;
-        }
-        ?>
     </div>
 
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'dbconnect.php';
+
 include '../classes/autoload.php';
 
 

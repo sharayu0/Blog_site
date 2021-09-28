@@ -2,7 +2,6 @@
 
 session_start();
 
-include 'dbconnect.php';
 include '../classes/autoload.php';
 
 
@@ -57,7 +56,7 @@ if(isset($_SESSION['username'])){
               { ?>
 
               <div class="in_data">
-                <form action="admin_code.php" method="POST">
+                <form action="admin_update_user.php" method="POST">
                 
                   <div class="head">
                     Edit User Profile

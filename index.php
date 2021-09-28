@@ -1,6 +1,6 @@
 <?php
 
-include '../classes/autoload.php';
+include 'template/classes/autoload.php';
 session_start();
 
 ?>
@@ -14,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../../css/home_ano.css">
+    <link rel="stylesheet" href="css/home_ano.css">
 
 
     <title>Welcome</title>
@@ -24,9 +24,21 @@ session_start();
 <body>
 
     <div class="main">
-        <?php
-        include '../partial/nav.php';
-        ?>
+    <div class="navbar">
+        <div class="logo_div">
+            <a href="#" class="logo">BloGEX</a>
+        </div>
+            <input type="checkbox" id="toggle" class="toggle">
+            <label for="toggle">&#9776</label>
+        
+        <div class="navitem">
+            <a class="nav" href="#">Home</a>
+            <a class="nav" href="#">My Post</a>
+            <a class="nav" href="#">Contact</a>
+            <a class="nav" href="template/login/login.php">Login</a>
+            <a class="nav" href="template/login/signup.php">Signup </a>
+        </div>
+    </div> 
 
         <div class="main_div">
             <div class="main_quote">
@@ -103,7 +115,7 @@ session_start();
     </div>
 
     <?php
-    include '../partial/footer.php';
+    include 'template/partial/footer.php';
     ?>
 
 

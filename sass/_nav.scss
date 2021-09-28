@@ -14,10 +14,10 @@
 
         .logo{
             @include text_deco_none;
-            font-size: 2rem;
+            font-size: 1.5rem;
 
             @include responsive(mobile_M){
-                font-size: 1.7rem;
+                font-size: 1.2rem;
             }
         }
     }
@@ -48,7 +48,7 @@
         .nav{
             @include text_deco_none;
             padding: 0 12px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
     
             @include responsive(tablet){
                 display: block;

@@ -74,7 +74,7 @@ if(isset($_SESSION['username'])){
                 <div class="view_btn">
                       <a href="edit.php?id=<?php echo $q['id']?>" class="button edit_btn" name="edit">Edit</a>
 
-                      <form method="POST">
+                      <form method="POST" action="delete_post.php">
                         <input type="text" hidden value='<?php echo $q['id']?>' name="id">
                         <button class="button" name="delete">Delete</button>
                       </form>
@@ -90,16 +90,7 @@ if(isset($_SESSION['username'])){
       </div>
     </div>
 
-    <?php
-    if(isset($_REQUEST['delete'])){
-      $obj = new Blogs();
-       $id = $_REQUEST['id']; 
-       $obj-> delete_blog($id);
-     
-      //  header("Location: mypost.php?info=deleted");
-      //  exit();
-   }
-   ?>
+  
     <script>
 
     $(document).ready(function(){
