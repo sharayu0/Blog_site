@@ -46,22 +46,22 @@ if (isset($_SESSION['username'])) {
                             Create Blog
                         </div>
 
-                       
-                            <div class="form-group">
-                                <label for="title" class="label">Blog Title</label>
-                                <input type="text" id="title" name="title" placeholder="Blog Title" class="form-control">
-                            </div>
 
-                            <div class="form-content">
-                                <label for="content" class="label">Content</label>
-                                <textarea name="content" id="content" class="form-control"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="title" class="label">Blog Title</label>
+                            <input type="text" id="title" name="title" placeholder="Blog Title" class="form-control">
+                        </div>
 
-                            <div class="image_file">
-                                <input type="file" name="image" id="image" class="upload_file">
+                        <div class="form-content">
+                            <label for="content" class="label">Content</label>
+                            <textarea name="content" id="content" class="form-control"></textarea>
+                        </div>
 
-                            </div>
-                        
+                        <div class="image_file">
+                            <input type="file" name="image" id="image" class="upload_file">
+
+                        </div>
+
 
                         <div class="form-btn">
                             <button name="new_post" class="button">Add Post</button>
@@ -76,7 +76,7 @@ if (isset($_SESSION['username'])) {
 
         </div>
     </div>
-   
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

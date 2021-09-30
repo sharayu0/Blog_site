@@ -7,4 +7,3 @@ function myAutoLoad($className){
     
     include $fullpath;
 }
-?>

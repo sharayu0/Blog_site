@@ -23,12 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($result)) {
 
             $obj->signup($username, $password);
-           
+
             $showAlert = "<div class='post_notify'>Your Account is Successfully created !!!</div>";
         } else {
 
             $showAlert = "<div class='post_notify'>Username<span class='dup_entry'>$username</span> already exist.. Try another one!!!!!</div>";
-            
         }
     } else {
         $showAlert = "<div class='post_notify'>Password do not match !!!</div>";
@@ -71,12 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include '../partial/nav.php';
         ?>
         <?php
-            
-            
-            if ($showAlert) {
-                echo $showAlert;
-            }
-            
+
+
+        if ($showAlert) {
+            echo $showAlert;
+        }
+
         ?>
 
         <div class="log_container">

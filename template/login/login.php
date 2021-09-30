@@ -35,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } else {
                         header("location: ../admin/admin_index.php");
                     }
-
                 }
             } elseif ($row['usertype'] == 'user') {
                 if (isset($_SESSION['username'])) {
@@ -71,9 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
 
         <?php
-            if ($showAlert) {
-                echo $showAlert;
-            }
+        if ($showAlert) {
+            echo $showAlert;
+        }
         ?>
         <div class="log_container">
 
@@ -86,10 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="input">
                         <span class="fa fa-user">
                         </span>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required value="<?php if (isset($_COOKIE['usercookie'])) 
-                        {
-                            echo $_COOKIE['usercookie'];
-                        } ?>">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required value="<?php if (isset($_COOKIE['usercookie'])) {
+                                                                                                                                            echo $_COOKIE['usercookie'];
+                                                                                                                                        } ?>">
                     </div>
 
                 </div>
@@ -99,10 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="input">
                         <span class="fas fa-lock">
                         </span>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if (isset($_COOKIE['passwordcookie'])) 
-                        {
-                            echo base64_encode($_COOKIE['passwordcookie']);
-                        } ?>">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if (isset($_COOKIE['passwordcookie'])) {
+                                                                                                                                    echo base64_encode($_COOKIE['passwordcookie']);
+                                                                                                                                } ?>">
                     </div>
                 </div>
 
