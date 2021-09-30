@@ -24,24 +24,24 @@ session_start();
 <body>
 
     <div class="main">
-    <div class="navbar">
-        <div class="logo_div">
-            <a href="#" class="logo">BloGEX</a>
-        </div>
+        <div class="navbar">
+            <div class="logo_div">
+                <a href="#" class="logo">BloGEX</a>
+            </div>
             <input type="checkbox" id="toggle" class="toggle">
             <label for="toggle">&#9776</label>
-        
-        <div class="navitem">
-            <a class="nav" href="#">Home</a>
-            <a class="nav" href="#">My Post</a>
-            <a class="nav" href="#">Contact</a>
-            <a class="nav" href="template/login/login.php">Login</a>
-            <a class="nav" href="template/login/signup.php">Signup </a>
+
+            <div class="navitem">
+                <a class="nav" href="#">Home</a>
+                <a class="nav" href="#">My Post</a>
+                <a class="nav" href="#">Contact</a>
+                <a class="nav" href="template/login/login.php">Login</a>
+                <a class="nav" href="template/login/signup.php">Signup </a>
+            </div>
         </div>
-    </div> 
 
         <div class="main_div">
-            <div class="main_quote">
+            <div class="main_quote info_size">
                 “Blogging is to writing what extreme sports are to athletics: more free-form, more accident-prone, less formal, more alive. It is, in many ways, writing out loud.”
 
                 <p>
@@ -60,12 +60,15 @@ session_start();
 
 
 
-    <section class="info">
+    <section class="info_div">
         <div class="head">What is Blogging ??</div>
-        A Blog is a platform for sharing information and communication. You must have seen blogs that are ones personal talking about everything they did or think on a particular field or subject.
+        <div class="info_size">
+            A Blog is a platform for sharing information and communication. You must have seen blogs that are ones personal talking about everything they did or think on a particular field or subject.
 
-        <p>Reading today's thoughts thodays posts, positive energy will be filled in you. Everyone wants that their day is the best and freshest. So go throughout and Read the blogs and enjoy your day.
-            Sometimes we may tempted to say everything we think but we don't so write here what's in your mind and what you are thinking, Explore here.</p>
+            <p>Reading today's thoughts thodays posts, positive energy will be filled in you. Everyone wants that their day is the best and freshest. So go throughout and Read the blogs and enjoy your day.
+                Sometimes we may tempted to say everything we think but we don't so write here what's in your mind and what you are thinking, Explore here.</p>
+        </div>
+
     </section>
 
     <div class="img_div">
@@ -102,8 +105,11 @@ session_start();
                         <div class="blog_data">
                             <h3 class="head"><?php echo $q['title']; ?></h3>
                             <p class="img_data"><?php echo substr($q['content'], 0, 200); ?></p>
+                            <div class="author">@
+                                <?php echo $q['username']; ?>
+                            </div>
                             <div class="btn_read">
-                                <a href="../post/userview.php?id=<?php echo $q['id'] ?>" class="read_btn">Read More</a>
+                                <a href="template/login/login.php" class="read_btn">Read More</a>
                             </div>
                         </div>
                     </div>

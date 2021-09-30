@@ -16,11 +16,12 @@
             
             height: max-content;
             width: 55%;
-            background: white;
+            color: var(--text-color);
+            background: var(--post-back-col);
 
-            @include responsive(laptop){
-                width: 55%;
-            }
+            @include responsive(laptop_M){
+                width: 45%;
+            }          
             @include responsive(tablet){
                 width: 55%;
             }
@@ -32,48 +33,104 @@
             }
 
             form{
-                margin: 17% 7%;
-    
+                margin: 15% 7%;
+
+                @include responsive(laptop_M){
+                    margin: 12% 7%;
+                }
+                
                 .head{
                     text-align: center;
-                    font-size: 25px;
+                    font-size: 1.8rem;
                     font-weight: bold;
+
+                    @include responsive(laptop_M){
+                        font-size: 1.3rem;
+                    }
                 }
                 .form-group{
                     height: 30px;
                     width: 100%;
                     margin: auto;
-                    margin-top: 3rem;
-                    line-height: 1.5;
-    
+                    height: 35px;
+                    margin-top: 5rem;
+                    line-height: 2.5;
+
+                    @include responsive(laptop_M){
+                        height: 27px;
+                        margin-top: 2.5rem;
+                        line-height: 1.5;
+                    }
+                    @include responsive(laptop){
+                        margin-top: 3rem;
+                        line-height: 1.6;    
+                    }
+                    @include responsive(tablet){
+                        margin-top: 2.5rem;
+                        line-height: 1.6;
+                        height: 23px;
+                    }
                     .label{
-                        font-size: 16px;
+                        font-size: 18px;
+
+                        @include responsive(laptop_M){
+                            font-size: 14px;
+                        }
+                        @include responsive(tablet){
+                            font-size: 13px;
+                        }
                     }
     
                     .form-control{
                         height: 100%;
                         width: 100%;
+                        font-size: 15px;
+                        color: #a09d9d;
+
+                        @include responsive(laptop_M){
+                            font-size: 12px;
+                        }
                     }
                 }
                 .form-btn{
+                    display: flex;
                     margin-top: 37px;
-                    
-                   
+                    justify-content: center;
+
+                    @include responsive(laptop_M){
+                        margin-top: 30px;
+                    }
+                    @include responsive(tablet){
+                        margin-top: 10%;
+                    }
                     .button{
-                        display: block;
-                        width: 100%;
-                        background: #a2d1e7;
-                        padding: 7px 0;
+                       
+                        background: var(--secondary-color);
+                        padding: 10px 14px;
                         text-align: center;
-                        color: white;
+                        color: var(--border-color);
                         text-decoration: none;
-                        border: 1px solid black;
-                        margin-top: 3rem;
-                        font-size: 16px;
+                        border: none;
+                        margin: 0 5%;
+                        margin-top: 4rem;
+                        font-weight: bold;
+                        font-size: 1.2rem;
+
+                        @include responsive(laptop_M){
+                           
+                        padding: 7px 7px;   
+                        margin: 0 2%;
+                        margin-top: 2rem;
+                        font-size: 0.8rem;
+                        }
+
+                        @include responsive(tablet){
+                            padding: 7px 23px;
+                            margin: 0 3%;
+                            margin-top: 2.5rem;
+                        }
                     }
-                    .edit_btn{
-                        margin-top: 1.4rem;
-                    }
+                    
                 }
             }
         }

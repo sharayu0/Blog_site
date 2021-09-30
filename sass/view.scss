@@ -1,6 +1,6 @@
-@import 'partials/navbar';
-@import 'partials/footer';
-@import 'partials/mixin';
+@import 'navbar';
+@import 'footer';
+@import 'mixin';
 
 
 .body{
@@ -26,9 +26,13 @@
                 font-size: 2.5em;
                 font-weight: bold;
                 margin-left: 4px;
+                color: var(--text-color);
 
+                @include responsive(laptop_M){
+                    font-size: 2rem;
+                }
                 @include responsive(tablet){
-                    font-size: 2em;
+                    font-size: 1.4rem;
                 }
 
             }
@@ -51,10 +55,28 @@
                 }
 
                 .view_content{
-                    font-size: 1em;
+                    font-size: 1rem;
+                    text-align: justify;
+                    color: var(--text-color);
 
+                    @include responsive(laptop_M){
+                        font-size: 0.9rem;
+                    }
                     @include responsive(tablet){
-                        font-size: 0.8em;
+                        font-size: 0.7rem;
+                    }
+                }
+
+                .author{
+                    color: var(--text-color);
+                    float: right;
+                    margin-top: 15px;
+
+                    @include responsive(laptop_M){
+                        font-size: 0.9rem;
+                    }
+                    @include responsive(tablet){
+                        font-size: 0.7rem;
                     }
                 }
 
@@ -64,7 +86,7 @@
                     margin: 45px 0;
 
                     @include responsive(mobile_M){
-                        margin: 25px 0;
+                        
                     }
 
                     .button{
@@ -75,16 +97,37 @@
                         background-color: #183654;
                         color: white;
                         font-size: 15px;
-                        width: 66px;
+                        width: 75px;
                         text-align: center;
                         height: 28px;
                         align-items: center;
                         border-radius: 7px;
 
+                        @include responsive(tablet){
+                            width: 66px;
+                            height: 26px;
+                            font-size: 13px;
+                        }
+                        @include responsive(mobile_M){
+                           
+                            height: 24px;
+                            font-size: 11px;
+                        }
                     }
                     .edit_btn{
                         height: 26px;
                         line-height: 26px;
+
+                        @include responsive(tablet){
+                            font-size: 13px;
+                            height: 25px;
+                            line-height: 25px;
+                        }
+                        @include responsive(mobile_M){
+                            font-size: 11px;
+                            height: 23px;
+                            line-height: 23px;
+                        }
                     }
                 }
             }

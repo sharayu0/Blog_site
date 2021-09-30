@@ -1,7 +1,7 @@
 .footer{
     width: 100%;
-    background-color: #f8f8f8;
-    color: #304e6b;
+    background-color: var(--footer-col);
+    color: var(--border-color);
 
     @include responsive(laptop){
         font-size: 14px;
@@ -55,7 +55,7 @@
 
             .foot-link{
                 text-decoration: none;
-                color: #304e6b;
+                color: var(--border-color);
             }
 
         }
@@ -80,7 +80,7 @@
         .icons{
 
             .fab, .fas{
-                color: #304e6b;
+                color: var(--border-color);
                 font-size: 1.5rem;
                 margin: 9px;
 
@@ -94,7 +94,8 @@
 
     .footer-bottom-text{
         text-align: center;
-        background: #d4d1d1;
+        background: var(--bottom-col);
+        color: var(--border-color);
         padding: 15px 0;
         margin: 0;
 

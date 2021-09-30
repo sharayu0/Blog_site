@@ -16,9 +16,14 @@
     font-size: 1.2rem;
   }
 }
+@media only screen and (max-width: 425px) {
+  .navbar {
+    padding-top: 7%;
+  }
+}
 .navbar label {
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: none;
 }
 @media only screen and (max-width: 768px) {
@@ -30,7 +35,7 @@
 }
 @media only screen and (max-width: 425px) {
   .navbar label {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 .navbar .navitem {
@@ -51,7 +56,14 @@
 @media only screen and (max-width: 768px) {
   .navbar .navitem .nav {
     display: block;
-    margin: 22px 0;
+    font-size: 1rem;
+    margin: 20px 0;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .navbar .navitem .nav {
+    font-size: 0.9rem;
+    margin: 16px 0;
   }
 }
 .navbar .navitem .nav:hover {
@@ -161,6 +173,16 @@
     opacity: 0;
   }
 }
+.post_notify {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 4%;
+  padding: 6px 0;
+  color: #085008;
+  background: #a6daa6;
+}
+
 * {
   margin: 0;
 }
@@ -172,6 +194,10 @@
   background-size: 100% 100%;
   width: 100%;
   height: 100vh;
+}
+
+.post_notify {
+  width: 40%;
 }
 
 .log_container {

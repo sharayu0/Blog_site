@@ -24,7 +24,6 @@ if (isset($_SESSION['username'])) {
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-
     <link rel="stylesheet" href="../../css/create.css">
 
     <title>Blog using PHP & MySQL</title>
@@ -47,7 +46,7 @@ if (isset($_SESSION['username'])) {
                             Create Blog
                         </div>
 
-                        <div>
+                       
                             <div class="form-group">
                                 <label for="title" class="label">Blog Title</label>
                                 <input type="text" id="title" name="title" placeholder="Blog Title" class="form-control">
@@ -62,7 +61,7 @@ if (isset($_SESSION['username'])) {
                                 <input type="file" name="image" id="image" class="upload_file">
 
                             </div>
-                        </div>
+                        
 
                         <div class="form-btn">
                             <button name="new_post" class="button">Add Post</button>
@@ -78,6 +77,11 @@ if (isset($_SESSION['username'])) {
         </div>
     </div>
    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="../../js/script.js"></script>
+
 
 </body>
 

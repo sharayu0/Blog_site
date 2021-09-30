@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $obj->signup($username, $password);
            
-            $showAlert = "<div class='alert'>Your Account is Successfully created !!!</div>";
+            $showAlert = "<div class='post_notify'>Your Account is Successfully created !!!</div>";
         } else {
 
-            $showAlert = "<div class='alert'>Username<span class='dup_entry'>$username</span> already exist.. Try another one!!!!!</div>";
+            $showAlert = "<div class='post_notify'>Username<span class='dup_entry'>$username</span> already exist.. Try another one!!!!!</div>";
             
         }
     } else {
-        $showAlert = "<div class='alert'>Password do not match !!!</div>";
+        $showAlert = "<div class='post_notify'>Password do not match !!!</div>";
     }
 }
 

@@ -15,4 +15,8 @@
         @media only screen and (max-width:1024px)
         {    @content   };
     }
+    @if $breakpoint == laptop_M {
+        @media only screen and (max-width:1200px)
+        {    @content   };
+    }
 }

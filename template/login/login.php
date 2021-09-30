@@ -14,9 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $obj->login($username, $password);
 
     if ($result < 1) {
-        $showAlert = "<div class='alert'>Invalid Credentials !!!</div>";
+        $showAlert = "<div class='post_notify'>Invalid Credentials !!!</div>";
     } else {
-    
+
+        $_SESSION['status'] = "You are logged in successfuly";
         foreach ($result as $row) {
 
             $_SESSION['username'] = $row['username'];
@@ -35,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         header("location: ../admin/admin_index.php");
                     }
 
-                    header("location: ../admin/admin_index.php");
                 }
             } elseif ($row['usertype'] == 'user') {
                 if (isset($_SESSION['username'])) {

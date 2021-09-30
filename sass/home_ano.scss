@@ -37,6 +37,21 @@ body,html{
             color: #ffffffd1;
             font-size: 1rem;
             line-height: 1.4;
+            text-align: justify;
+
+            @include responsive(laptop){
+                font-size: 0.9rem;
+            }
+            @include responsive(tablet){
+                position: relative;
+                margin-top: 45%;
+                font-size: 0.85rem;
+                width: 85%;
+            }
+            @include responsive(mobile_M){
+                width: 100%;
+                margin-top: 70%;
+            }
         }
         
     }
@@ -69,6 +84,10 @@ body,html{
         transform: translate(-50%,-50%);
         color: #ffffffd1;
         font-size: 2.5rem;
+
+        @include responsive(tablet){
+            font-size: 2rem;
+        }
     }
 }
 
@@ -81,17 +100,51 @@ body,html{
     background-attachment: fixed;
 }
 
-.info{
-    font-size: 1rem;
+.info_div{
     background-color: #a1cae6f2;
     text-align: center;
-    padding: 30px 50px;
+    padding: 30px 0px;
+
+    @include responsive(laptop){
+        font-size: 0.9rem;
+    }
+    @include responsive(tablet){
+        font-size: 0.8rem;
+    }
 
     .head{
         font-size: 1.8rem;
         color: #000;
         margin-bottom: 30px;
         font-weight: bold;
+
+        @include responsive(tablet){
+            font-size: 1.5rem;
+            margin-bottom: 23px;
+        }
+        @include responsive(mobile_M){
+            font-size: 1.3rem;
+       
+        }
+    }
+
+    .info_size{
+        text-align: justify;
+        font-size: 1rem;
+        width: 85%;
+        margin: auto;
+        line-height: 1.4;
+
+        @include responsive(laptop){
+            font-size: 0.9rem;
+        }
+        @include responsive(tablet){
+            font-size: 0.8rem;
+        }
+        @include responsive(mobile_M){
+            width: 75%;
+           
+        }
     }
 }
 
@@ -104,7 +157,14 @@ body,html{
         font-size: 2rem;
         font-weight: bold;
         text-align: center;
-        padding: 6%;
+        padding: 6% 0;
+
+        @include responsive(tablet){
+            font-size: 1.5rem;
+        }
+        @include responsive(mobile_M){
+            font-size: 1.2rem;
+        }
     }
 
     .blog_post{
@@ -113,64 +173,110 @@ body,html{
         width: 100%;
         justify-content: center;
 
-        .blog_div{
-            width: 280px;
-            height: 450px;
+        .blog_div {
+            width: 270px;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 12px;
             background-color: white;
             color: var(--text-color);
             margin: 2% 2%;
             position: relative;
-            // box-shadow: 0 6px 8px 1 rgba(5, 5, 5, 0.2);
+            box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
             transition: all 0.4s ease-in-out;
+     
+            @include responsive(laptop_M){
+                width: 220px;
+                height: 392px;
+            }
+    
+            @include responsive(laptop){
+                
+            }
+    
+            @include responsive(mobile_M){
+                width: 100%;
+                height: 100%;
+                margin: 6% 0%;
+                border-radius: 0;
+            }
+    
+           
 
             .blog_img {
                 height: 46%;
 
-                .main_img{
+                @include responsive(laptop_M){
+                
+                    height: 45%;
+                }
+    
+                .main_img {
                     width: 100%;
                     height: 100%;
                 }
             }
 
             .blog_data{
+                
                 overflow: auto;
                 padding: 14px;
                 
+                @include responsive(laptop_M){
+                    padding: 10px;
+                }
+                @include responsive(mobile_M){
+                    width: 85%;
+                    margin: 6% 2%;
+                    min-height: 180px;
+                }
 
                 .head {
                     margin: 1% 0;
                     white-space: nowrap; 
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    color: var(--text-color);
+                    color: black;
+
+                    @include responsive(laptop_M){
+                    font-size: 1rem;
+                    }
                 }
-                .img_data{
-                    font-size: 14px;
+                .img_data {
+                    font-size: 1rem;
                     line-height: 1.6;
                     margin: 5% 1%;
                     text-align: justify;
-                    color: #787c81;
+                    color: black;
+                    max-height: 140px;
+                    overflow-y: auto;
+    
+    
+                    @include responsive(laptop_M){
+                        font-size: 0.7rem;
+                        max-height: 115px;
+                        overflow-y: auto;
+                    }
                 }
 
                 .author{
-                    font-size: 16px;
-                    color: #a2a1a9;
+                    font-size: 12px;
+                    color: #282829;
                     position: absolute;
                     right: 17px;
-                    bottom: 70px;
+                    bottom: 34px;
                 }
 
                 .read_btn {
                     text-decoration: none;
-                    color: var(--text-color);
                     position: absolute;
                     bottom: 29px;
                     color: white;
-                    padding: 7px;
-                    // box-shadow: 0 6px 8px 1px rgb(0, 0, 0 / 0.2);
-                    border-radius: 7px;
-                    background-color: #183654;
-                       
+                    font-size: 12px;
+                    padding: 5px 7px;
+                    box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
+                    background-color: #304e6b;
                 }
             }
             

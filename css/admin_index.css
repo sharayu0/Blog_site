@@ -8,20 +8,28 @@ body {
   --primary-color: #183654;
   --secondary-color: #a2d1e7;
   --ternary-color:#799aaa;
+  --border-color: #183654;
   --mode-color: #d4d1d1;
   --post-back-col: white;
   --text-color:black;
+  --table-back-col:#cee9f1;
   --scroll-col:#304e6b;
+  --footer-col: #f8f8f8;
+  --bottom-col: #d4d1d1;
 }
 
 .dark_theme {
   --primary-color: #1e2a3a;
   --secondary-color: #111821;
   --ternary-color: #223349;
+  --border-color: #fff;
   --mode-color: #555557b9;
   --post-back-col: #1e2a3a;
   --text-color:white;
+  --table-back-col:#1e2a3a;
   --scroll-col:#1d2e44;
+  --footer-col:#18202b;
+  --bottom-col: #273241;
 }
 
 .container {
@@ -52,7 +60,6 @@ body {
   background-color: var(--primary-color);
   position: sticky;
   top: 0;
-  overflow: scroll;
   padding: 2% 0;
 }
 @media only screen and (max-width: 768px) {
@@ -138,20 +145,20 @@ body {
 }
 .navbar .name {
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin: 9%;
   text-align: center;
 }
 @media only screen and (max-width: 768px) {
   .navbar .name {
-    margin: 3%;
-    margin-top: 6%;
+    margin: 0% 2%;
+    margin-top: 1%;
   }
 }
 .navbar .name label {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   display: none;
 }
 @media only screen and (max-width: 768px) {
@@ -178,9 +185,9 @@ body {
   }
 }
 .navbar .minimize .profile .profle_pic {
-  width: 145px;
+  width: 120px;
   margin: auto;
-  height: 145px;
+  height: 120px;
   border-radius: 50%;
   background-color: white;
   display: flex;
@@ -194,7 +201,7 @@ body {
   }
 }
 .navbar .minimize .profile .profle_pic .initial {
-  font-size: 7em;
+  font-size: 5em;
   font-weight: bold;
   color: #183654;
 }
@@ -206,7 +213,7 @@ body {
 .navbar .minimize .profile .profile_info {
   color: white;
   margin: 9%;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   text-align: center;
   padding: 0 5%;
   line-height: 1.5;
@@ -241,7 +248,7 @@ body {
   }
 }
 .navbar .minimize .nav .nav_block {
-  margin: 4% 0;
+  margin: 3% 0;
 }
 @media only screen and (max-width: 768px) {
   .navbar .minimize .nav .nav_block {
@@ -255,7 +262,7 @@ body {
 }
 .navbar .navitem {
   color: white;
-  font-size: 1.2em;
+  font-size: 0.9em;
   font-weight: bold;
 }
 .navbar .fas {
@@ -281,24 +288,10 @@ body {
   }
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--scroll-col);
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(transparent, var(--scroll-col));
-  border-radius: 6px;
-}
-
 .footer {
   width: 100%;
-  background-color: #f8f8f8;
-  color: #304e6b;
+  background-color: var(--footer-col);
+  color: var(--border-color);
 }
 @media only screen and (max-width: 1024px) {
   .footer {
@@ -356,7 +349,7 @@ body {
 }
 .footer .footer-cont .foot-div .foot-link {
   text-decoration: none;
-  color: #304e6b;
+  color: var(--border-color);
 }
 .footer .foot-icon {
   width: max-content;
@@ -376,7 +369,7 @@ body {
   margin: 0;
 }
 .footer .foot-icon .icons .fab, .footer .foot-icon .icons .fas {
-  color: #304e6b;
+  color: var(--border-color);
   font-size: 1.5rem;
   margin: 9px;
 }
@@ -388,9 +381,20 @@ body {
 }
 .footer .footer-bottom-text {
   text-align: center;
-  background: #d4d1d1;
+  background: var(--bottom-col);
+  color: var(--border-color);
   padding: 15px 0;
   margin: 0;
+}
+
+.post_notify {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 4%;
+  padding: 6px 0;
+  color: #085008;
+  background: #a6daa6;
 }
 
 body {
@@ -406,7 +410,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
   .index .post_div {
-    top: 33%;
+    top: 15%;
   }
 }
 .index .user_div {
@@ -416,7 +420,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
   .index .user_div {
-    top: 37%;
+    top: 20%;
   }
 }
 .index .add_post_div {
@@ -426,7 +430,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
   .index .add_post_div {
-    top: 41%;
+    top: 25%;
   }
 }
 .index .add_user_div {
@@ -436,34 +440,42 @@ body {
 }
 @media only screen and (max-width: 768px) {
   .index .add_user_div {
-    top: 45%;
+    top: 30%;
   }
 }
 .index .fas {
-  font-size: 22px;
+  font-size: 18px;
   color: white;
   padding: 3px 6px;
   width: 25px;
-  background: #183654;
+  background: #304e6b;
 }
 @media only screen and (max-width: 1024px) {
   .index .fas {
-    font-size: 16px;
+    font-size: 12px;
     color: white;
-    padding: 3px 6px;
-    width: 18px;
-    background: #183654;
+    padding: 4px 8px;
+    width: 13px;
   }
 }
 .index .index_link {
   text-decoration: none;
   border: 1px solid black;
-  border-radius: 7px;
+  border-radius: 5px;
   color: white;
   background: #304e6b;
-  padding: 5px 34px;
+  font-size: 11px;
+  padding: 4px 26px;
   margin: 7px;
   display: none;
+}
+
+.post_notify {
+  text-align: center;
+  margin: 0 17%;
+  margin-top: 4%;
+  padding: 6px 0;
+  background: #a6daa6;
 }
 
 #manage_posts {
@@ -480,19 +492,30 @@ body {
 }
 
 .admin_manage {
-  padding: 15% 0;
+  padding: 2% 0;
+}
+.admin_manage .head {
+  font-size: 1.8rem;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  margin: 8% 0;
+}
+@media only screen and (max-width: 768px) {
+  .admin_manage .head {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .admin_manage .head {
+    font-size: 1.3rem;
+  }
 }
 .admin_manage .utable_div {
   width: 82%;
   height: max-content;
   margin: auto;
   overflow-y: auto;
-}
-@media only screen and (max-width: 1024px) {
-  .admin_manage .utable_div {
-    width: 89%;
-    margin-left: 15px;
-  }
 }
 @media only screen and (max-width: 425px) {
   .admin_manage .utable_div {
@@ -528,11 +551,12 @@ body {
   border: 1px solid #ddd;
   text-align: center;
   font-size: 16px;
+  color: var(--text-color);
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
   .admin_manage .utable_div .user_table .div_cell {
-    padding: 2px 6px;
-    font-size: 13px;
+    padding: 3px 4px;
+    font-size: 12px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -545,22 +569,22 @@ body {
   display: inline-block;
 }
 .admin_manage .utable_div .user_table .div_cell .btn {
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  width: 35px;
+  color: var(--border-color);
+  font-size: 0.9rem;
+  width: 30px;
   padding: 5px 8px;
   border: none;
   background: transparent;
 }
 .admin_manage .utable_div .user_table .div_cell .btn:hover {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--border-color);
+  color: var(--post-back-col);
   text-align: center;
 }
 @media only screen and (max-width: 768px) {
   .admin_manage .utable_div .user_table .div_cell .btn {
     border-radius: 5px;
-    width: 50px;
+    width: 20px;
     padding: 0px 1px;
     font-size: 10PX;
   }
@@ -571,8 +595,12 @@ body {
   color: #fff;
 }
 
+#white_col {
+  color: #fff;
+}
+
 .admin_manage tbody tr:nth-child(even) {
-  background-color: #cee9f1;
+  background-color: var(--table-back-col);
 }
 
 #overlay {
@@ -604,13 +632,13 @@ body {
   text-decoration: none;
   background: #183654;
   color: white;
-  padding: 6px 11px;
+  padding: 3px 9px;
   margin: 4px 4px;
   border-radius: 7px;
+  font-size: 12PX;
 }
 @media only screen and (max-width: 768px) {
   .page_div .pagination li .page_no {
-    font-size: 13PX;
     padding: 4px 11px;
     border-radius: 5px;
   }

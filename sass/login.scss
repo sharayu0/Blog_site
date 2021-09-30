@@ -1,7 +1,7 @@
 @import 'nav';
 @import 'animation';
 @import 'mixin';
-
+@import 'validation';
 
 *{
     margin: 0;
@@ -20,6 +20,10 @@
 @mixin text_deco_none{
     text-decoration: none;
     color: #fff;
+}
+
+.post_notify{
+    width: 40%;
 }
 
 .log_container{

@@ -2,16 +2,7 @@
 
 session_start();
 
-include 'dbconnect.php';
 include '../classes/autoload.php';
-
-if (isset($_SESSION['username'])) {
-    $uid = $_SESSION['uid'];
-    $username = $_SESSION['username'];
-} else {
-    header("location:login.php");
-}
-
 
 if (isset($_POST["update"])) {
 
@@ -25,10 +16,9 @@ if (isset($_POST["update"])) {
     $title = $_POST["title"];
     $content = $_POST["content"];
 
-    $obj1->update_blog($imagename, $title, $content, $id);
+    $res = $obj1->update_blog($imagename, $title, $content, $id);
 
-    if ($obj1) {
-        header("Location: ../author/mypost.php?info=updated");
-        exit();
-    }
+
+    $_SESSION['status'] = "Post has been updated successfuly";
+    header("Location: ../author/mypost.php");
 }

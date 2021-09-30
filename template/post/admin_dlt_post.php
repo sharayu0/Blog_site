@@ -1,5 +1,5 @@
 <?php
-include 'dbconnect.php';
+session_start();
 include '../classes/autoload.php'; 
 
 $obj = new Blogs();
@@ -7,9 +7,13 @@ $obj = new Blogs();
 if(isset($_POST['delete'])){
 
     $id=$_POST['dlt_id'];
-    $obj-> delete_blog($id);
-    
-    header("location:admin_index.php?info=deleted");
+    $res = $obj-> delete_blog($id);
+
+    if(!$res){
+        $_SESSION['status'] = "Post has been deleted sussessfully";
+
+        header("location:../admin/admin_index.php");
+    }
    
 }
 ?> 

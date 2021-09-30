@@ -22,9 +22,13 @@
         }
     }
 
+    @include responsive(mobile_M){
+        padding-top: 7%;
+    }
+
     label{
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.5rem;
         display: none;   
 
         @include responsive(tablet){
@@ -33,8 +37,9 @@
             cursor: pointer;
         }
         @include responsive(mobile_M){
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
+        
     }
 
     .navitem{
@@ -52,8 +57,14 @@
     
             @include responsive(tablet){
                 display: block;
-                margin: 22px 0;
+                font-size: 1rem;
+                margin: 20px 0;
             }
+            @include responsive(mobile_M){
+                font-size: 0.9rem;
+                margin: 16px 0;
+            }
+            
 
             &:hover{
                 color: rgb(5, 45, 78);

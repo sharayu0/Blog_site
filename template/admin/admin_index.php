@@ -111,32 +111,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       </div>
 
-      <?php if (isset($_REQUEST['info'])) { ?>
-    <?php if ($_REQUEST['info'] == "added") { ?>
+      <?php
+      if (isset($_SESSION['status'])) {
 
-      <?php echo '<center><div class="post_notify">User data is Updated!!</div></center>'; ?>
-
-    <?php
-    } else if ($_REQUEST['info'] == "notadded") { ?>
-
-      <?php echo '<center><div class="post_notify">User data is not Updated!!</div></center>'; ?>
-
-    <?php
-    } else if ($_REQUEST['info'] == "deleted") { ?>
-
-      <?php echo '<center><div class="post_notify">User data deleted Successfully!!</div></center>'; ?>
-
-    <?php
-    } else if ($_REQUEST['info'] == "updated") { ?>
-      <?php echo '<center><div class="post_notify"> data updated Successfully!!</div></center>'; ?>
-
-    <?php
-    }
-  } ?>
+      ?>
+        <div class="post_notify">
+          <?php
+          echo $_SESSION['status'];
+          ?>
+        </div>
+      <?php
+        unset($_SESSION['status']);
+      }
+      ?>
 
       <section id="manage_posts" class="admin_manage">
 
-
+        <div class="head">
+          Manage Blog Posts
+        </div>
         <div class="utable_div">
 
 
@@ -144,11 +137,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <table class="user_table">
             <thead>
 
-              <th class="div_cell no">No.</th>
-              <th class="div_cell image">Image</th>
-              <th class="div_cell title">Title</th>
-              <th class="div_cell Author">Author</th>
-              <th class="div_cell Operation">Operation</th>
+              <th class="div_cell no" id="white_col">No.</th>
+              <th class="div_cell image" id="white_col">Image</th>
+              <th class="div_cell title" id="white_col">Title</th>
+              <th class="div_cell Author" id="white_col">Author</th>
+              <th class="div_cell Operation" id="white_col">Operation</th>
 
 
             </thead>
@@ -259,6 +252,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <section id="manage_users" class="admin_manage">
 
+        <div class="head">
+          Manage Users
+        </div>
 
         <div class="utable_div">
 
@@ -267,11 +263,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <table class="user_table">
             <thead>
               <tr>
-                <th class="div_cell">User Id</th>
-                <th class="div_cell">Username</th>
-                <th class="div_cell">Password</th>
-                <th class="div_cell">Usertype</th>
-                <th class="div_cell">Operation</th>
+                <th class="div_cell" id="white_col">User Id</th>
+                <th class="div_cell" id="white_col">Username</th>
+                <th class="div_cell" id="white_col">Password</th>
+                <th class="div_cell" id="white_col">Usertype</th>
+                <th class="div_cell" id="white_col">Operation</th>
 
               </tr>
             </thead>
@@ -328,20 +324,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pages = $obj->getCountUser();
         $user_page = isset($_GET['user_page']) ? $_GET['user_page'] : 1;
 
-        // if($user_page > 1){
-        //   $pre = $user_page - 1;
-        // }
-        // else{
-        //   $pre = 1;
-        // }
-
-        // if($user_page < $pages){
-        //   $next = $user_page + 1;
-        // }
-        // else{
-        //   $next = $pages;
-        // }
-
         ?>
 
         <div class="page_div">
@@ -396,54 +378,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
-  <script>
-    function on() {
-      document.getElementById("overlay").style.display = "block";
-    }
-
-    function off() {
-      document.getElementById("overlay").style.display = "none";
-    }
-
-
-
-    $(document).ready(function() {
-      $(".navbar").click(function() {
-        var x = $(window).width();
-        if (x < 850) {
-          $(".minimize").toggle();
-        }
-      });
-    });
-
-    $(document).resize(function() {
-      $(".navbar").click(function() {
-        var x = $(window).width();
-        if (x < 850) {
-          $(".minimize").toggle();
-        }
-      });
-    });
-
-
-
-
-    const toggle = document.getElementById("toggle");
-    toggle.onclick = function() {
-      toggle.classList.toggle("active");
-      document.body.classList.toggle('dark_theme');
-    }
-
-
-
-    $(document).ready(function() {
-      $(".post_icon").click(function() {
-        $(this).siblings('.index_link').toggle();
-      });
-    });
-  </script>
+  <script src="../../js/admin_index.js"></script>
 
 
 </body>

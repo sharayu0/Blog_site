@@ -1,7 +1,7 @@
 @import 'navbar';
 @import 'footer';
 @import 'mixin';
-
+@import 'validation';
 
 
 body{ 
@@ -19,7 +19,7 @@ body{
         right: 1%;
 
         @include responsive(tablet){
-            top: 33%;
+            top: 15%;
         }
     }
 
@@ -29,7 +29,7 @@ body{
         right: 1%;
 
         @include responsive(tablet){
-            top: 37%;
+            top: 20%;
         }
     }
 
@@ -39,7 +39,7 @@ body{
         right: 1%;
 
         @include responsive(tablet){
-            top: 41%;
+            top: 25%;
         }
     }
 
@@ -49,43 +49,47 @@ body{
         right: 1%;
 
         @include responsive(tablet){
-            top: 45%;
+            top: 30%;
         }
     }
 
     .fas{
-        font-size: 22px;
+        font-size: 18px;
         color: white;
         padding: 3px 6px;
         width: 25px;
-        background: #183654;
+        background: #304e6b;
 
 
         @include responsive(laptop){
-            font-size: 16px;
+            font-size: 12px;
             color: white;
-            padding: 3px 6px;
-            width: 18px;
-            background: #183654;
+            padding: 4px 8px;
+            width: 13px;
         }
     }
 
     .index_link{
         text-decoration: none;
         border: 1px solid black;
-        border-radius: 7px;
+        border-radius: 5px;
         color: white;
         background: #304e6b;
-        padding: 5px 34px;
+        font-size: 11px;
+        padding: 4px 26px;
         margin: 7px;
         display: none;
     }
-    
-
-    
+      
 }
 
-
+.post_notify{
+    text-align: center;
+    margin: 0 17%;
+    margin-top: 4%;
+    padding: 6px 0;
+    background: #a6daa6;
+}
 
 
 #manage_posts{
@@ -102,7 +106,23 @@ body{
 }
 
 .admin_manage{
-    padding: 15% 0;
+    padding: 2% 0;
+
+    .head{
+        font-size: 1.8rem;
+        color: #000;
+        font-weight: bold;
+        text-align: center;
+        margin: 8% 0;
+
+        @include responsive(tablet){
+            font-size: 1.5rem;
+        }
+        @include responsive(mobile_M){
+            font-size: 1.3rem;
+       
+        }
+    }
 
     .utable_div{
         width: 82%;
@@ -110,10 +130,10 @@ body{
         margin: auto;        
         overflow-y: auto;
 
-        @include responsive(laptop){
-            width: 89%;
-            margin-left: 15px;
-        }
+        // @include responsive(laptop){
+        //     width: 89%;
+        //     margin-left: 15px;
+        // }
 
         @include responsive(mobile_M){
             width: 84%;
@@ -144,10 +164,11 @@ body{
                border: 1px solid #ddd;
                text-align: center;
                font-size: 16px;
+               color: var(--text-color);
 
-                @include responsive(laptop){
-                    padding: 2px 6px;
-                    font-size: 13px;
+                @include responsive(laptop_M){
+                    padding: 3px 4px;
+                    font-size: 12px;
                 }
 
                 @include responsive(tablet){
@@ -160,22 +181,22 @@ body{
                 }
 
                 .btn{
-                   color: var(--primary-color);
-                   font-size: 1.2rem;
-                   width: 35px;
+                   color: var(--border-color);
+                   font-size: 0.9rem;
+                   width: 30px;
                    padding: 5px 8px;
                    border: none;
                    background: transparent;
 
                    &:hover{
-                       background-color: var(--primary-color);
-                       color: white;
+                       background-color: var(--border-color);
+                       color: var(--post-back-col);
                        text-align: center;
                    }
 
                    @include responsive(tablet){
                     border-radius: 5px;
-                    width: 50px;
+                    width: 20px;
                     padding: 0px 1px;
                     font-size: 10PX;
                 }
@@ -190,9 +211,11 @@ body{
     background-color: var(--primary-color);
     color: #fff;
 }
-
+#white_col{
+    color: #fff;
+}
 .admin_manage tbody tr:nth-child(even){
-    background-color: #cee9f1;
+    background-color: var(--table-back-col);
 }
 #overlay{   
     position: fixed;
@@ -224,12 +247,13 @@ body{
                 text-decoration: none;
                 background: #183654;
                 color: white;
-                padding: 6px 11px;
+                padding: 3px 9px;
                 margin: 4px 4px;
                 border-radius: 7px;
+                font-size: 12PX;
 
                 @include responsive(tablet){
-                    font-size: 13PX;
+                    
                     padding: 4px 11px;
                     border-radius: 5px;
                 }

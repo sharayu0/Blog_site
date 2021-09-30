@@ -38,12 +38,12 @@ class User extends Dbase{
     }
 
 
-    public function updateUser($username,$password,$usertype,$uid){
-        $sql = "UPDATE users SET username=?, password=?, usertype=? WHERE uid=?";
+    public function updateUser($username,$usertype,$uid){
+        $sql = "UPDATE users SET username=?, usertype=? WHERE uid=?";
 
         $stmt = $this->connect()->prepare($sql);
 
-        $stmt->execute([$username,$password,$usertype,$uid]); 
+        $stmt->execute([$username,$usertype,$uid]); 
         return $stmt;
     }
 

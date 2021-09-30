@@ -16,9 +16,14 @@
     font-size: 1.2rem;
   }
 }
+@media only screen and (max-width: 425px) {
+  .navbar {
+    padding-top: 7%;
+  }
+}
 .navbar label {
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: none;
 }
 @media only screen and (max-width: 768px) {
@@ -30,7 +35,7 @@
 }
 @media only screen and (max-width: 425px) {
   .navbar label {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 .navbar .navitem {
@@ -51,7 +56,14 @@
 @media only screen and (max-width: 768px) {
   .navbar .navitem .nav {
     display: block;
-    margin: 22px 0;
+    font-size: 1rem;
+    margin: 20px 0;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .navbar .navitem .nav {
+    font-size: 0.9rem;
+    margin: 16px 0;
   }
 }
 .navbar .navitem .nav:hover {
@@ -70,8 +82,8 @@
 
 .footer {
   width: 100%;
-  background-color: #f8f8f8;
-  color: #304e6b;
+  background-color: var(--footer-col);
+  color: var(--border-color);
 }
 @media only screen and (max-width: 1024px) {
   .footer {
@@ -129,7 +141,7 @@
 }
 .footer .footer-cont .foot-div .foot-link {
   text-decoration: none;
-  color: #304e6b;
+  color: var(--border-color);
 }
 .footer .foot-icon {
   width: max-content;
@@ -149,7 +161,7 @@
   margin: 0;
 }
 .footer .foot-icon .icons .fab, .footer .foot-icon .icons .fas {
-  color: #304e6b;
+  color: var(--border-color);
   font-size: 1.5rem;
   margin: 9px;
 }
@@ -161,7 +173,8 @@
 }
 .footer .footer-bottom-text {
   text-align: center;
-  background: #d4d1d1;
+  background: var(--bottom-col);
+  color: var(--border-color);
   padding: 15px 0;
   margin: 0;
 }
@@ -198,6 +211,26 @@ body, html {
   color: #ffffffd1;
   font-size: 1rem;
   line-height: 1.4;
+  text-align: justify;
+}
+@media only screen and (max-width: 1024px) {
+  .main .main_div .main_quote {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main .main_div .main_quote {
+    position: relative;
+    margin-top: 45%;
+    font-size: 0.85rem;
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .main .main_div .main_quote {
+    width: 100%;
+    margin-top: 70%;
+  }
 }
 .main .overlay {
   position: absolute;
@@ -227,6 +260,11 @@ body, html {
   color: #ffffffd1;
   font-size: 2.5rem;
 }
+@media only screen and (max-width: 768px) {
+  .img_div .quote {
+    font-size: 2rem;
+  }
+}
 
 .main, .img_div {
   position: relative;
@@ -236,17 +274,59 @@ body, html {
   background-attachment: fixed;
 }
 
-.info {
-  font-size: 1rem;
+.info_div {
   background-color: #a1cae6f2;
   text-align: center;
-  padding: 30px 50px;
+  padding: 30px 0px;
 }
-.info .head {
+@media only screen and (max-width: 1024px) {
+  .info_div {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .info_div {
+    font-size: 0.8rem;
+  }
+}
+.info_div .head {
   font-size: 1.8rem;
   color: #000;
   margin-bottom: 30px;
   font-weight: bold;
+}
+@media only screen and (max-width: 768px) {
+  .info_div .head {
+    font-size: 1.5rem;
+    margin-bottom: 23px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .info_div .head {
+    font-size: 1.3rem;
+  }
+}
+.info_div .info_size {
+  text-align: justify;
+  font-size: 1rem;
+  width: 85%;
+  margin: auto;
+  line-height: 1.4;
+}
+@media only screen and (max-width: 1024px) {
+  .info_div .info_size {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .info_div .info_size {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .info_div .info_size {
+    width: 75%;
+  }
 }
 
 .blog {
@@ -258,7 +338,17 @@ body, html {
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  padding: 6%;
+  padding: 6% 0;
+}
+@media only screen and (max-width: 768px) {
+  .blog .content_head {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .blog .content_head {
+    font-size: 1.2rem;
+  }
 }
 .blog .blog_post {
   display: flex;
@@ -267,16 +357,38 @@ body, html {
   justify-content: center;
 }
 .blog .blog_post .blog_div {
-  width: 280px;
-  height: 450px;
+  width: 270px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
   background-color: white;
   color: var(--text-color);
   margin: 2% 2%;
   position: relative;
+  box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
   transition: all 0.4s ease-in-out;
+}
+@media only screen and (max-width: 1200px) {
+  .blog .blog_post .blog_div {
+    width: 220px;
+    height: 392px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .blog .blog_post .blog_div {
+    width: 100%;
+    height: 100%;
+    margin: 6% 0%;
+    border-radius: 0;
+  }
 }
 .blog .blog_post .blog_div .blog_img {
   height: 46%;
+}
+@media only screen and (max-width: 1200px) {
+  .blog .blog_post .blog_div .blog_img {
+    height: 45%;
+  }
 }
 .blog .blog_post .blog_div .blog_img .main_img {
   width: 100%;
@@ -286,36 +398,63 @@ body, html {
   overflow: auto;
   padding: 14px;
 }
+@media only screen and (max-width: 1200px) {
+  .blog .blog_post .blog_div .blog_data {
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .blog .blog_post .blog_div .blog_data {
+    width: 85%;
+    margin: 6% 2%;
+    min-height: 180px;
+  }
+}
 .blog .blog_post .blog_div .blog_data .head {
   margin: 1% 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--text-color);
+  color: black;
+}
+@media only screen and (max-width: 1200px) {
+  .blog .blog_post .blog_div .blog_data .head {
+    font-size: 1rem;
+  }
 }
 .blog .blog_post .blog_div .blog_data .img_data {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.6;
   margin: 5% 1%;
   text-align: justify;
-  color: #787c81;
+  color: black;
+  max-height: 140px;
+  overflow-y: auto;
+}
+@media only screen and (max-width: 1200px) {
+  .blog .blog_post .blog_div .blog_data .img_data {
+    font-size: 0.7rem;
+    max-height: 115px;
+    overflow-y: auto;
+  }
 }
 .blog .blog_post .blog_div .blog_data .author {
-  font-size: 16px;
-  color: #a2a1a9;
+  font-size: 12px;
+  color: #282829;
   position: absolute;
   right: 17px;
-  bottom: 70px;
+  bottom: 34px;
 }
 .blog .blog_post .blog_div .blog_data .read_btn {
   text-decoration: none;
-  color: var(--text-color);
   position: absolute;
   bottom: 29px;
   color: white;
-  padding: 7px;
-  border-radius: 7px;
-  background-color: #183654;
+  font-size: 12px;
+  padding: 5px 7px;
+  box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #304e6b;
 }
 
 .blog_div:hover {

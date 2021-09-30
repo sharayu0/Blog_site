@@ -10,20 +10,28 @@ body{
     --primary-color: #183654;
     --secondary-color: #a2d1e7;
     --ternary-color :#799aaa;
-     --mode-color: #d4d1d1;
+    --border-color: #183654;
+    --mode-color: #d4d1d1;
     --post-back-col: white;
     --text-color:black;
+    --table-back-col:#cee9f1;
     --scroll-col:#304e6b;
+    --footer-col: #f8f8f8;
+    --bottom-col: #d4d1d1;
 }
 
 .dark_theme{
     --primary-color: #1e2a3a;
     --secondary-color: #111821;
     --ternary-color: #223349; 
+    --border-color: #fff;
     --mode-color: #555557b9;
     --post-back-col: #1e2a3a;
     --text-color:white;
+    --table-back-col:#1e2a3a;
     --scroll-col:#1d2e44;
+    --footer-col:#18202b;
+    --bottom-col: #273241;
 }
 
 .container{
@@ -54,7 +62,6 @@ body{
     background-color: var(--primary-color);
     position: sticky;
     top: 0;
-    overflow: scroll;
     padding: 2% 0;
 
     @include responsive(tablet){
@@ -137,19 +144,19 @@ body{
 
     .name{
         color: white;
-        font-size: 1.7rem;
+        font-size: 1.2rem;
         font-weight: bold;
         margin: 9%;
         text-align: center;
 
         @include responsive(tablet){
-            margin: 3%;
-            margin-top: 6%;
+            margin: 0% 2%;
+            margin-top: 1%;
         }
 
         label{
             color: #fff;
-            font-size: 1.7rem;
+            font-size: 1.2rem;
             display: none;   
     
             @include responsive(tablet){
@@ -178,9 +185,9 @@ body{
             }
 
             .profle_pic{
-                width: 145px;
+                width: 120px;
                 margin: auto;
-                height: 145px;
+                height: 120px;
                 border-radius: 50%;
                 background-color: white;
                 display: flex;
@@ -193,7 +200,7 @@ body{
                 }
     
                 .initial{
-                    font-size: 7em;
+                    font-size: 5em;
                     font-weight: bold;
                     color: #183654;
 
@@ -207,7 +214,7 @@ body{
             .profile_info{
                 color: white;
                 margin: 9%;
-                font-size: 1.2rem;
+                font-size: 0.9rem;
                 text-align: center;
                 padding: 0 5%;
                 line-height: 1.5;
@@ -241,7 +248,7 @@ body{
             }
 
             .nav_block{
-                margin: 4% 0;
+                margin: 3% 0;
 
                 @include responsive(tablet){
                     margin: 3%;
@@ -258,7 +265,7 @@ body{
 
     .navitem{
         color: white;
-        font-size: 1.2em;
+        font-size: 0.9em;
         font-weight: bold;
     }
     .fas{
@@ -284,17 +291,20 @@ body{
     }
 }
 
-::-webkit-scrollbar{
-    width: 10px;
-}
-::-webkit-scrollbar-thumb{
-    background: var(--scroll-col);
-    border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover{
-    background: linear-gradient(transparent, var(--scroll-col));
-    border-radius: 6px;
-}
+// ::-webkit-scrollbar{
+//     width: 10px;
+//     @include responsive(tablet){
+//         width: 1px;
+//     }
+// }
+// ::-webkit-scrollbar-thumb{
+//     background: var(--scroll-col);
+//     border-radius: 6px;
+// }
+// ::-webkit-scrollbar-thumb:hover{
+//     background: linear-gradient(transparent, var(--scroll-col));
+//     border-radius: 6px;
+// }
 
 
 
